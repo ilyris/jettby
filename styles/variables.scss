@@ -1,0 +1,39 @@
+// Colors
+$primary: #151b3d !default;
+$secondary: #949494 !default;
+$green: #217426 !default;
+$white: #fff !default;
+
+// typography
+$h1-font-size: (30px * 2) !default;
+
+// Nabar
+$navbar-padding-x: 40px;
+$nav-link-padding-y: 0 !default;
+$nav-link-font-size: 18px !default;
+$navbar-dark-color: $white !default;
+$nav-tabs-link-active-bg: $primary !default;
+$nav-tabs-link-active-color: $white !default;
+$nav-tabs-border-radius: 0 !default;
+
+// Inputs
+$enable-validation-icons: false !default;
+$btn-focus-box-shadow: unset !default;
+$input-focus-box-shadow: unset !default;
+$input-btn-focus-blur: 0;
+$input-btn-focus-width: 0;
+$input-btn-focus-color: transparent !default;
+
+// Popover
+$popover-arrow-color: $secondary;
+
+// Cards
+$card-spacer-x: 1.5rem !default;
+$card-cap-bg: transparent !default;
+// Form
+$form-label-color: $secondary !default;
+@import "bootstrap/scss/bootstrap.scss";
+
+:export {
+  secondary: $secondary;
+}

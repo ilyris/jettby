@@ -1,0 +1,23 @@
+.HowWeServe {
+  background-color: $white;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  padding: 60px 0;
+  width: 100%;
+  > * {
+    width: 100%;
+  }
+
+  h2,
+  h4 {
+    text-align: center;
+  }
+
+  &--cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 60px;
+  }
+}

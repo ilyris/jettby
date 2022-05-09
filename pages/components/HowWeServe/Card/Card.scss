@@ -1,0 +1,15 @@
+.ServeCard {
+  flex: 0 1 30%;
+  border: 0;
+
+  > div {
+    border: 0;
+    svg {
+      width: 40px;
+    }
+
+    &:last-of-type {
+      width: 80%;
+    }
+  }
+}
