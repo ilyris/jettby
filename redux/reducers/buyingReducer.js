@@ -8,7 +8,7 @@ const initialState = {
 
 const buyingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'BUYING_CAR':
+    case 'BUYING':
       return {
         car: action.payload,
       };

@@ -1,9 +1,11 @@
 // import reducers here
 import { combineReducers } from 'redux';
-import { buyingReducer } from './buyingReducer';
+import modelOptionReducer from './modelOptionReducer';
+import buyingReducer from './buyingReducer';
 
 const rootReducer = combineReducers({
   buying: buyingReducer,
+  modelOptionReducer: modelOptionReducer,
 });
 
 export default rootReducer;

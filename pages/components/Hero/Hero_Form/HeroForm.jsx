@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-import { setModelOptions } from '../../../redux/actions';
+import axios from 'axios';
 
 // comps
 import Form from 'react-bootstrap/Form';
@@ -16,6 +12,7 @@ import {
   faMap,
   faMapMarkerAlt,
   faChevronDown,
+  faRectangleWide,
 } from '@fortawesome/free-solid-svg-icons';
 import Inputcard from './Input__Card/InputCard';
 
@@ -23,9 +20,14 @@ import Inputcard from './Input__Card/InputCard';
 import data from '../../../assests/hero_form_data.json';
 
 // helpers
-import { getAllModels, getVinInfo } from '../../../helpers/api-calls/dot-calls';
+import { getAllModels } from '../../../helpers/api-calls/dot-calls.js';
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setModelOptions } from '../../../../redux/actions';
+
 export default function Heroform({}) {
-  const router = useRouter();
+  console.log('loggin');
   const [buying, setBuying] = useState(true);
   const [formClass, setFormClass] = useState('is-buying');
   const [formName, setFormName] = useState('buying');
@@ -59,6 +61,7 @@ export default function Heroform({}) {
   };
 
   const handleChange = async (e) => {
+    console.log({ key });
     const key = e.target.name.toLowerCase().replace(' ', '_');
     buying
       ? setBuyingFormData({ ...buyingFormData, [key]: e.target.value })
@@ -67,6 +70,8 @@ export default function Heroform({}) {
     if (buying && e.target.name === 'Make' && buyingFormData.make !== 'All') {
       const modelList = getAllModels(buyingFormData.make);
       modelList.then((results) => {
+        console.log(dispatch);
+        console.log(setModelOptions);
         dispatch(setModelOptions(results));
         setAllModels(results);
       });
@@ -78,12 +83,22 @@ export default function Heroform({}) {
       // submit buying
     } else {
       // submit selling
-      const promise = getVinInfo(sellingFormData.vin);
-      promise
-        .then((results) => {
-          setVinData(results);
-          window.localStorage.setItem('vinDetails', JSON.stringify(results));
-          router.push('/sell/details');
+      axios
+        .get(
+          `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/5UXWX7C5*BA?format=json`
+        )
+        .then((res) => {
+          console.log(res.data.Results);
+
+          // remove empty values
+          const data = res.data.Results.filter(
+            (obj) =>
+              obj.Value &&
+              obj.Value !== 'Not Applicable' &&
+              obj.Value !== '6' &&
+              obj.Value !== '6 - Incomplete VIN'
+          );
+          setVinData(data);
         })
         .catch((err) => console.log(err));
     }
@@ -93,6 +108,8 @@ export default function Heroform({}) {
     if (buying && buyingFormData.make !== 'All') {
       const modelList = getAllModels(buyingFormData.make);
       modelList.then((results) => {
+        console.log('later', dispatch);
+        console.log('later', setModelOptions);
         setAllModels(results);
       });
     }
@@ -120,7 +137,7 @@ export default function Heroform({}) {
             {data.data.inputs.map((d, i) => {
               return (
                 <Inputcard
-                  key={d.label}
+                  key={Math.random()}
                   type={d.type}
                   icon={icons[i]}
                   cid={d.cid}
@@ -154,7 +171,7 @@ export default function Heroform({}) {
             <Inputcard
               key='License Plate'
               type={'text'}
-              icon={faCar}
+              icon={faRectangleWide}
               cid={'plateControl'}
               label={'License Plate'}
               options={null}
