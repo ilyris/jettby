@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Form from "react-bootstrap/Form";
+import { useSelector } from "react-redux";
 
 export default function Inputcard({
   type,
@@ -9,18 +10,11 @@ export default function Inputcard({
   label,
   options = [],
   arrow = null,
-  change,
-  allModels = [],
-  make = "",
+  changeFunc,
 }) {
-  const [models, setModels] = useState(["All models"]);
-  // if (allModels.length) {
-  useEffect(() => {
-    if (label === "Model" && allModels.length) {
-      setModels([...models, ...allModels]);
-    }
-  }, [allModels.length]);
-  //}
+  const modelList = useSelector(
+    (state) => state.modelOptionReducer.inputs[1].options
+  );
 
   return (
     <div className="InputCard" data-key={label}>
@@ -31,41 +25,32 @@ export default function Inputcard({
         <Form.Label>{label}</Form.Label>
         {type === "select" ? (
           <div className="select-container">
-            <Form.Select name={label} onChange={change}>
+            <Form.Select name={label} onChange={changeFunc}>
               {label === "Model" &&
-                models.map((model) => {
+                modelList.map((model) => {
+                  console.log(model);
                   return (
-                    <option key={label} value={model}>
+                    <option key={model} value={model}>
                       {model}
                     </option>
                   );
                 })}
 
-              {label === "Make" &&
-                options.map((option) => {
-                  if (option.includes("All")) {
-                    return (
-                      <option key={label} value="All">
-                        {option}
-                      </option>
-                    );
-                  } else {
-                    return (
-                      <option key={label} value={option}>
-                        {option}
-                      </option>
-                    );
-                  }
-                })}
-
-              {(label === "Distance" || label === "Price") &&
-                options.map((option) => {
+              {options.map((option) => {
+                if (option.includes("All")) {
                   return (
-                    <option key={label} value={option}>
+                    <option key={option} value="All">
                       {option}
                     </option>
                   );
-                })}
+                } else {
+                  return (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  );
+                }
+              })}
             </Form.Select>
             {arrow !== null && (
               <FontAwesomeIcon className="select-icon" icon={arrow} />
@@ -76,7 +61,7 @@ export default function Inputcard({
             name={label}
             type="text"
             placeholder="11111"
-            onChange={change}
+            onChange={changeFunc}
           />
         )}
       </Form.Group>
