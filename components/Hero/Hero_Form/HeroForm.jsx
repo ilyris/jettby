@@ -34,9 +34,10 @@ export default function Heroform({}) {
   const [formClass, setFormClass] = useState('is-buying');
   const [formName, setFormName] = useState('buying');
 
-  const inputData = useSelector((state) => state.modelOptionReducer.inputs);
-
   const router = useRouter();
+
+  // redux
+  const inputData = useSelector((state) => state.modelOptionReducer.inputs);
   const dispatch = useDispatch();
 
   // use Redux for these

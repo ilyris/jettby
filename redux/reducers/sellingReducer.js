@@ -9,6 +9,7 @@ const initialState = {
 const sellingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELLING_OPTIONS:
+      console.log('action.payload', action.payload);
       return {
         state: action.payload,
       };

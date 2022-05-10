@@ -12,7 +12,6 @@ const buyingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_BUYING_OPTIONS:
       return {
-        ...state,
         state: action.payload,
       };
     default:
