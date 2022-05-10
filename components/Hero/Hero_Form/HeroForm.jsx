@@ -139,7 +139,7 @@ export default function Heroform({}) {
               cid={"vinControl"}
               label={"VIN"}
               options={null}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <span>or</span>
             <Inputcard
@@ -149,7 +149,7 @@ export default function Heroform({}) {
               cid={"plateControl"}
               label={"License Plate"}
               options={null}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <Inputcard
               key="State"
@@ -159,7 +159,7 @@ export default function Heroform({}) {
               label={"State"}
               options={["WI", "CO", "MI"]}
               arrow={faChevronDown}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <div>
               <Button variant="primary" type="submit">

@@ -92,7 +92,10 @@ const initialState = {
 const modelOptionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MODEL_OPTIONS:
-      const modelObj = { ...state.inputs[1], options: action.payload };
+      const modelObj = {
+        ...state.inputs[1],
+        options: ["All models", ...action.payload],
+      };
       state.inputs[1] = modelObj;
       return { ...state };
     default:

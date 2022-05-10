@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Form from "react-bootstrap/Form";
 import { useSelector } from "react-redux";
-
+import Option from "../../../inputs/Option";
 export default function Inputcard({
   type,
   icon,
@@ -26,31 +26,13 @@ export default function Inputcard({
         {type === "select" ? (
           <div className="select-container">
             <Form.Select name={label} onChange={changeFunc}>
-              {label === "Model" &&
-                modelList.map((model) => {
-                  console.log(model);
-                  return (
-                    <option key={model} value={model}>
-                      {model}
-                    </option>
-                  );
-                })}
-
-              {options.map((option) => {
-                if (option.includes("All")) {
-                  return (
-                    <option key={option} value="All">
-                      {option}
-                    </option>
-                  );
-                } else {
-                  return (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  );
-                }
-              })}
+              {label === "Model"
+                ? modelList.map((model) => {
+                    return <Option value={model} />;
+                  })
+                : options.map((option) => {
+                    return <Option value={option} />;
+                  })}
             </Form.Select>
             {arrow !== null && (
               <FontAwesomeIcon className="select-icon" icon={arrow} />
