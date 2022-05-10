@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setModelOptions } from "../../../redux/actions";
+
 // comps
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -20,11 +24,16 @@ import data from "../../../assests/hero_form_data.json";
 
 // helpers
 import { getAllModels, getVinInfo } from "../../../helpers/api-calls/dot-calls";
+
 export default function Heroform({}) {
-  const router = useRouter();
   const [buying, setBuying] = useState(true);
   const [formClass, setFormClass] = useState("is-buying");
   const [formName, setFormName] = useState("buying");
+
+  const inputData = useSelector((state) => state.modelOptionReducer.inputs);
+
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   // use Redux for these
   const [buyingFormData, setBuyingFormData] = useState({
@@ -40,7 +49,6 @@ export default function Heroform({}) {
     state: "co",
   });
   const [vinData, setVinData] = useState([]);
-  const [allModels, setAllModels] = useState([]);
 
   const icons = [faMagnifyingGlass, faCar, faWallet, faMap, faMapMarkerAlt];
 
@@ -50,19 +58,13 @@ export default function Heroform({}) {
     setFormName(e.target.name);
   };
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     const key = e.target.name.toLowerCase().replace(" ", "_");
     buying
       ? setBuyingFormData({ ...buyingFormData, [key]: e.target.value })
       : setSellingFormData({ ...sellingFormData, [key]: e.target.value });
-
-    if (buying && e.target.name === "Make" && buyingFormData.make !== "All") {
-      const modelList = getAllModels(buyingFormData.make);
-      modelList.then((results) => {
-        setAllModels(results);
-      });
-    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.target.name.includes("buying")) {
@@ -81,10 +83,9 @@ export default function Heroform({}) {
   };
 
   useEffect(() => {
-    if (buying && buyingFormData.make !== "All") {
-      const modelList = getAllModels(buyingFormData.make);
-      modelList.then((results) => {
-        setAllModels(results);
+    if (buyingFormData.make !== "All") {
+      getAllModels(buyingFormData.make).then(async (results) => {
+        dispatch(setModelOptions(results));
       });
     }
   }, [buyingFormData.make]);
@@ -108,7 +109,7 @@ export default function Heroform({}) {
       <Form name={formName} className={formClass} onSubmit={handleSubmit}>
         {buying ? (
           <>
-            {data.data.inputs.map((d, i) => {
+            {inputData.map((d, i) => {
               return (
                 <Inputcard
                   key={d.label}
@@ -118,8 +119,7 @@ export default function Heroform({}) {
                   label={d.label}
                   options={d.options}
                   arrow={faChevronDown}
-                  change={handleChange}
-                  allModels={allModels}
+                  changeFunc={handleChange}
                   make={buyingFormData.make}
                 />
               );
@@ -139,7 +139,7 @@ export default function Heroform({}) {
               cid={"vinControl"}
               label={"VIN"}
               options={null}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <span>or</span>
             <Inputcard
@@ -149,7 +149,7 @@ export default function Heroform({}) {
               cid={"plateControl"}
               label={"License Plate"}
               options={null}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <Inputcard
               key="State"
@@ -159,7 +159,7 @@ export default function Heroform({}) {
               label={"State"}
               options={["WI", "CO", "MI"]}
               arrow={faChevronDown}
-              change={handleChange}
+              changeFunc={handleChange}
             />
             <div>
               <Button variant="primary" type="submit">
