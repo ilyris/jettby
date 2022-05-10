@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setModelOptions } from '../../../redux/actions';
+import { setModelOptions, setBuyingOptions } from '../../../redux/actions';
 
 // comps
 import Form from 'react-bootstrap/Form';

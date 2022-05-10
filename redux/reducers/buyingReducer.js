@@ -1,3 +1,5 @@
+import { SET_BUYING_OPTIONS } from '../actionTypes';
+
 const initialState = {
   make: '',
   model: '',
@@ -8,7 +10,7 @@ const initialState = {
 
 const buyingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'BUYING':
+    case SET_BUYING_OPTIONS:
       return {
         car: action.payload,
       };

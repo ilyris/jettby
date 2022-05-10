@@ -1,11 +1,16 @@
 // Actions
-import { SET_MODEL_OPTIONS } from './actionTypes';
+import { SET_MODEL_OPTIONS, SET_BUYING_OPTIONS } from './actionTypes';
 
 export const setModelOptions = (options) => {
-  console.log('options', options);
-  console.log({SET_MODEL_OPTIONS});
   return {
     type: SET_MODEL_OPTIONS,
+    payload: options,
+  };
+};
+
+export const setBuyingOptions = (options) => {
+  return {
+    type: SET_BUYING_OPTIONS,
     payload: options,
   };
 };
