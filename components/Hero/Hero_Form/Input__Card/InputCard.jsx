@@ -10,18 +10,17 @@ export default function Inputcard({
   options = [],
   arrow = null,
   change,
-  allModels,
+  allModels = [],
   make = "",
 }) {
   const [models, setModels] = useState(["All models"]);
+  // if (allModels.length) {
   useEffect(() => {
-    console.log(allModels);
     if (label === "Model" && allModels.length) {
-      console.log("hi");
-      console.log(models);
       setModels([...models, ...allModels]);
     }
   }, [allModels.length]);
+  //}
 
   return (
     <div className="InputCard" data-key={label}>
@@ -35,21 +34,37 @@ export default function Inputcard({
             <Form.Select name={label} onChange={change}>
               {label === "Model" &&
                 models.map((model) => {
-                  return <option value={model}>{model}</option>;
+                  return (
+                    <option key={label} value={model}>
+                      {model}
+                    </option>
+                  );
                 })}
 
               {label === "Make" &&
                 options.map((option) => {
                   if (option.includes("All")) {
-                    return <option value="All">{option}</option>;
+                    return (
+                      <option key={label} value="All">
+                        {option}
+                      </option>
+                    );
                   } else {
-                    return <option value={option}>{option}</option>;
+                    return (
+                      <option key={label} value={option}>
+                        {option}
+                      </option>
+                    );
                   }
                 })}
 
               {(label === "Distance" || label === "Price") &&
                 options.map((option) => {
-                  return <option value={option}>{option}</option>;
+                  return (
+                    <option key={label} value={option}>
+                      {option}
+                    </option>
+                  );
                 })}
             </Form.Select>
             {arrow !== null && (

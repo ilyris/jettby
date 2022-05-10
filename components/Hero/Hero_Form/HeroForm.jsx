@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useRouter } from "next/router";
 
 // comps
 import Form from "react-bootstrap/Form";
@@ -12,7 +12,6 @@ import {
   faMap,
   faMapMarkerAlt,
   faChevronDown,
-  faRectangleWide,
 } from "@fortawesome/free-solid-svg-icons";
 import Inputcard from "./Input__Card/InputCard";
 
@@ -20,9 +19,9 @@ import Inputcard from "./Input__Card/InputCard";
 import data from "../../../assests/hero_form_data.json";
 
 // helpers
-import { getAllModels } from "../../../helpers/api-calls/dot-calls.js";
-
+import { getAllModels, getVinInfo } from "../../../helpers/api-calls/dot-calls";
 export default function Heroform({}) {
+  const router = useRouter();
   const [buying, setBuying] = useState(true);
   const [formClass, setFormClass] = useState("is-buying");
   const [formName, setFormName] = useState("buying");
@@ -70,21 +69,12 @@ export default function Heroform({}) {
       // submit buying
     } else {
       // submit selling
-      axios
-        .get(
-          `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/5UXWX7C5*BA?format=json`
-        )
-        .then((res) => {
-          console.log(res.data.Results);
-          // remove empty values
-          const data = res.data.Results.filter(
-            (obj) =>
-              obj.Value &&
-              obj.Value !== "Not Applicable" &&
-              obj.Value !== "6" &&
-              obj.Value !== "6 - Incomplete VIN"
-          );
-          setVinData(data);
+      const promise = getVinInfo(sellingFormData.vin);
+      promise
+        .then((results) => {
+          setVinData(results);
+          window.localStorage.setItem("vinDetails", JSON.stringify(results));
+          router.push("/sell/details");
         })
         .catch((err) => console.log(err));
     }
@@ -155,7 +145,7 @@ export default function Heroform({}) {
             <Inputcard
               key="License Plate"
               type={"text"}
-              icon={faRectangleWide}
+              icon={faCar}
               cid={"plateControl"}
               label={"License Plate"}
               options={null}

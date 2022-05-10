@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+.main {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: rgba(gray, 0.1);
+}

@@ -1,8 +1,9 @@
 // import reducers here
 import { combineReducers } from 'redux';
+import { buyingReducer } from './buyingReducer';
 
 const rootReducer = combineReducers({
-  // reducers here ex: ''name of reducer': nameReducer
+  buying: buyingReducer,
 });
 
 export default rootReducer;
