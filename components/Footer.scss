@@ -1,0 +1,79 @@
+@import '../styles/variables.scss';
+
+footer {
+  background: $primary;
+  color: $secondary;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.footer-wrapper {
+  height: 100%;
+}
+
+.top-footer {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.left-footer {
+  width: 20%;
+  margin-right: 10rem;
+}
+
+.logo > h3 {
+  margin: 0;
+  font-size: 3rem;
+  color: black;
+}
+
+.right-footer {
+  width: 78%;
+  align-self: flex-start;
+  p {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+a {
+  color: $secondary !important;
+  text-decoration: none;
+}
+
+.right-footer > ul {
+  margin: 0;
+  letter-spacing: 0.08rem;
+}
+
+.logo {
+  color: $primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+  width: 170px;
+  background: $white;
+  border-radius: 50%;
+}
+
+.bottom-footer {
+  height: 9%;
+  border-top: 2px solid $white;
+  text-align: right;
+  p {
+    margin-top: 5px;
+  }
+}
