@@ -1,6 +1,54 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import CarCard from '../CarCard';
+import CarImage from '../../../../asset/Hero.jpg';
+
+const carCardsData = [
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+  {
+    carTitle: 'Mustang Sport Car',
+    carPicture: CarImage,
+    carMake: 'Mustank',
+    carPrice: 560,
+    carLocation: 'Detroit, Michigan',
+  },
+];
+
+const { carTitle, carPicture, carMake, carPrice, carLocation } = carCardsData;
 
 const FeaturedWrapper = () => {
   return (
@@ -10,55 +58,22 @@ const FeaturedWrapper = () => {
         We recommend the very best and newest cars today and also a friendly
         price for you
       </h5>
-      {/* map goes here */}
+      {carCardsData.map((card) => {
+        return (
+          <CarCard
+            key={Math.random()}
+            carPicture={card.carPicture}
+            carTitle={card.carTitle}
+            carMake={card.carMake}
+            carPrice={card.carPrice}
+            carLocation={card.carLocation}
+          />
+        );
+      })}
+
       <button>See More</button>
     </Container>
   );
 };
 
 export default FeaturedWrapper;
-
-const carCardsData = [
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-  {
-    carTitle: 'Mustang Sport Car',
-    carPicture: 'https://i.gyazo.com/b84b0a87e3d2d1900bd12cab0cc63670.png',
-    carMake: 'Mustank',
-    carPrice: 560,
-    carLocation: 'Detroit, Michigan',
-  },
-];

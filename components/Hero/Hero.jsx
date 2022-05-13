@@ -18,8 +18,8 @@ export default function Hero(props) {
           <div className='Hero--img'></div>
         </div>
         <HeroForm />
-        <FeaturedWrapper />
       </div>
+      <FeaturedWrapper />
     </Container>
   );
 }
