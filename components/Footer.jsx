@@ -6,38 +6,37 @@ import Container from 'react-bootstrap/Container';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className='footer'>
       <Container>
-        <div className='footer-wrapper'>
-          <div className='top-footer'>
-            <div className='left-footer'>
+        <div className='footer--wrapper'>
+          <div className='footer--top'>
+            <div className='footer--top__left'>
               <div className='logo'>
                 <h3>Jettby</h3>
               </div>
             </div>
-            <div className='right-footer'>
+            <div className='footer--top__right'>
               <p>Buying and Selling</p>
               <ul>
-                <a href='#home'>
-                  <li>Link</li>
-                </a>
-                <a href='#link'>
-                  <li>Link</li>
-                </a>
-                <a href='#link'>
-                  <li>Link</li>
-                </a>
-                <a href='#link'>
-                  <li>Link</li>
-                </a>
+                <li>
+                  <a href='#home'>Link</a>
+                </li>
+                <li>
+                  <a href='#home'>Link</a>
+                </li>
+                <li>
+                  <a href='#home'>Link</a>
+                </li>
+                <li>
+                  <a href='#home'>Link</a>
+                </li>
               </ul>
             </div>
           </div>
-          <div className='bottom-footer'>
+          <div className='footer--bottom'>
             <p>&copy; Jettby.com. All rights reserved.</p>
           </div>
         </div>
-        <div></div>
       </Container>
     </footer>
   );
