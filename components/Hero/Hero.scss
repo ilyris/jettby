@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .Hero {
   width: 100%;
@@ -25,7 +25,7 @@
     display: flex;
   }
   &--img {
-    background-image: url("./Accord_blue.png");
+    background-image: url('./Accord_blue.png');
     background-size: 100%;
     background-repeat: no-repeat;
     height: 100%;

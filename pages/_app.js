@@ -5,6 +5,7 @@ import SSRProvider from "react-bootstrap/SSRProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/variables.scss";
 import "../styles/components/components.scss";
+import "../styles/globals.scss";
 // Redux
 import { Provider } from "react-redux";
 import store from "../redux/store";

@@ -1,0 +1,88 @@
+.CarCard {
+  flex-basis: 30%;
+  box-shadow: $box-shadow-sm;
+  height: fit-content;
+  position: sticky;
+  top: 0;
+
+  > div:first-of-type {
+    padding-bottom: 0;
+    margin-top: 0.75rem;
+  }
+
+  h4 {
+    width: 60%;
+    color: $primary;
+  }
+
+  .card-body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .img {
+      background-image: url("../../../../components/Hero/Accord_blue.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: 135px;
+      width: 90%;
+      background-position: right;
+      margin: 0 auto;
+      transform: translateY(-30px);
+    }
+    .text-container {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+
+      > div {
+        width: 100%;
+        border-bottom: 1px solid $secondary;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          margin-bottom: 0.5rem;
+          width: 30%;
+          text-transform: capitalize;
+        }
+        p:last-of-type {
+          text-align: right;
+        }
+      }
+
+      .accordion {
+        width: 100%;
+        border: unset;
+        flex-flow: row wrap;
+        border-bottom: unset;
+
+        .accordion-header {
+          width: 100%;
+
+          .accordion-button {
+            background-color: transparent;
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+        .accordion-collapse {
+          width: 100%;
+          .accordion-body {
+            padding: 0;
+            width: 100%;
+
+            .accordion-item {
+              background-color: transparent;
+              display: flex;
+              justify-content: space-between;
+              border: 0;
+              span {
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
