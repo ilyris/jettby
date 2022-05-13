@@ -1,0 +1,40 @@
+.DetailsForm {
+  flex-basis: 50%;
+
+  h5 {
+    margin-bottom: 0;
+  }
+  .radioLabel {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .radioGroup {
+    display: inline-block;
+    margin-right: 20px;
+
+    input {
+      transform: scale(1.25);
+      margin-right: 5px;
+    }
+    span {
+      transform: translateY(-3px);
+      display: inline-block;
+    }
+  }
+  > div {
+    .form-check-input + span {
+      margin-left: 10px;
+    }
+  }
+  & > div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      width: 30%;
+      padding: 15px 20px;
+      font-size: 20px;
+    }
+  }
+}

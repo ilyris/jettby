@@ -20,7 +20,7 @@ import {
 import Inputcard from "./Input__Card/InputCard";
 
 // mock data
-import data from "../../../assests/hero_form_data.json";
+import data from "../../../asset/hero_form_data.json";
 
 // helpers
 import { getAllModels, getVinInfo } from "../../../helpers/api-calls/dot-calls";
