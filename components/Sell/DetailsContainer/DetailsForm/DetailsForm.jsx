@@ -5,6 +5,7 @@ import Button from "../../../inputs/Button/Button";
 
 // helpers
 import { renderStepInputs } from "../../../../helpers/renderStepInputs";
+import useTopScroll from "../../../../custom_hooks/useTopScroll";
 
 export default function Detailsform({
   vinData,
@@ -26,6 +27,10 @@ export default function Detailsform({
   const onSubmit = (e, values) => {
     console.log(values.getState().values);
   };
+
+  useEffect(() => {
+    useTopScroll();
+  }, [step]);
 
   return (
     <Form
