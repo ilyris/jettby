@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 
-export default function CarCard({ formState }) {
+export default function DetailsCard({ formState }) {
   const [vinData, setVinData] = useState(
     JSON.parse(window.localStorage.getItem("vinDetails"))
   );
@@ -13,7 +13,7 @@ export default function CarCard({ formState }) {
   }, [formState]);
 
   return (
-    <Card className="CarCard" bg="light" border="secondary">
+    <Card className="DetailsCard" bg="light" border="secondary">
       <Card.Header>
         <h4>
           {vinData.Make} {vinData.Model} {vinData.ModelYear}

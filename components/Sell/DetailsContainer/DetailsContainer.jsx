@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 // comps
-import CarCard from "./CarCard/CarCard";
+import DetailsCard from "./DetailsCard/DetailsCard";
 import DetailsForm from "./DetailsForm/DetailsForm";
 import Steps from "./Steps/Steps";
 
@@ -29,7 +29,7 @@ export default function DetailsContainer(props) {
         step={step}
         setStep={setStep}
       />
-      <CarCard formState={formState} />
+      <DetailsCard formState={formState} />
     </section>
   );
 }
