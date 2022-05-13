@@ -1,6 +1,20 @@
 // component styles
-@import "../../pages/components/Hero/Hero.scss";
-@import "../../pages/components/Hero/Hero_Form/HeroForm.scss";
-@import "../../pages/components/Hero/Hero_Form/Input__Card/InputCard.scss";
-@import "../../pages/components/HowWeServe/HowWeServe.scss";
-@import "../../pages/components/HowWeServe/Card/Card.scss";
+@import "../../components/Hero/Hero.scss";
+@import "../../components/Hero/Hero_Form/HeroForm.scss";
+@import "../../components/Hero/Hero_Form/Input__Card/InputCard.scss";
+@import "../../components/HowWeServe/HowWeServe.scss";
+@import "../../components/HowWeServe/Card/Card.scss";
+
+@import "../../components/inputs/FloatingInput/FloatingInput.scss";
+@import "../../components/Sell/DetailsContainer/DetailsContainer.scss";
+@import "../../components/Sell/DetailsContainer/DetailsForm/DetailsForm.scss";
+@import "../../components/Sell/DetailsContainer/Steps/Steps.scss";
+@import "../../components/Sell/DetailsContainer/CarCard/CarCard.scss";
+@import "../../components/Sell/DetailsContainer/Steps/StepBlock/StepBlock.scss";
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

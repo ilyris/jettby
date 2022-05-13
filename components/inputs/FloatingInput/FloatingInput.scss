@@ -1,0 +1,27 @@
+.form-floating > .form-control {
+  height: 55px;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 0.75em;
+  height: 60%;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 0.625rem;
+  border-color: #161a3d;
+  padding-left: 1.25rem;
+  height: 55px;
+}
+
+.form-floating > select.form-control:not(:placeholder-shown) {
+  padding-top: 0.725rem;
+  border-color: $secondary;
+}
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: $secondary;
+}

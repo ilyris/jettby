@@ -1,0 +1,71 @@
+.StepBlock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+
+  // Title
+  h4 {
+    position: absolute;
+    top: 0;
+    animation: fade-in 1500ms;
+    font-weight: 900;
+    font-family: "Open Sans ExtraBold";
+  }
+
+  // Circle
+  > div:first-of-type {
+    color: $white;
+    font-size: 20px;
+    padding: 15px;
+    box-sizing: content-box;
+    border-radius: 50%;
+    background-color: $secondary;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+
+    // Finished Step
+    &.done {
+      background-color: $primary;
+    }
+
+    // Current Step
+    &.current {
+      animation: toggle-background 1500ms;
+      background-color: $primary;
+    }
+    // Line
+    &.prev-current + div,
+    &.done + div {
+      background-color: $primary;
+    }
+  }
+
+  > div:last-of-type {
+    height: 2px;
+    width: 70%;
+    background-color: $secondary;
+    margin: 0 auto;
+  }
+}
+
+// animations
+@keyframes toggle-background {
+  0% {
+    background-color: $secondary;
+  }
+  100% {
+    background-color: $primary;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,36 @@
+User enters in VIn / plate info.
+-> redirect to sign in
+-> redirect to sell detail form
+Form will include...
+1) mileage
+2) zipcode
+3) exterior color
+4) interior colo
+5) origional owner
+6) title type.
+7) Drivetrain
+8) Transmission
+9) engine
+10) Convience options (cruiser control, cooled seats, heated seats, heated steerig wheel, keyless start, navigation system
+power liftgate, remote start)
+11) entertainment options (apple / adroid play, bluetooth, homelink, premium sound system, rear seat entertainment
+USB port)
+12) exterior (alloy wheels, sun/moon roof, tow hitch, tow hooks)
+13) Saftey (automatic emergency braking, backup camera, blind spot monitor, brake assist, lane departure warning
+LED headlights, rear cross traffic alert, stability control)
+14) Seating (Leather seats, memory seat, third row seating)
+
+15) Listig price for car.
+16) adding photos
+17) seller notes
+18) review form.
+
+--------- Car seller info -----------
+1) First name
+2) second name
+3) phone number
+
+
+
+
+
