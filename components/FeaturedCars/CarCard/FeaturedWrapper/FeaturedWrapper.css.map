@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,sBAAsB,CAAC;EACrB,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,QAAQ;EACnB,eAAe,EAAE,aAAa;CAC/B",
+    "sources": [
+        "FeaturedWrapper.scss"
+    ],
+    "names": [],
+    "file": "FeaturedWrapper.css"
+}

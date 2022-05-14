@@ -1,0 +1,25 @@
+.Featured {
+  .Featured--title {
+    font-family: Helvetica;
+    color: $primary;
+    text-align: center;
+    margin: 30px;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  .Featured--desc {
+    font-family: Helvetica;
+    text-align: center;
+    font-size: 1.5rem;
+    color: darkgrey;
+    margin: 0 auto 40px auto;
+    width: 50%;
+  }
+
+  .Featured-Card-Wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}

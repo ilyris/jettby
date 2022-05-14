@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import HeroForm from './Hero_Form/HeroForm';
-import FeaturedWrapper from '../FeaturedCars/CarCard/FeaturedWrapper/FeaturedWrapper';
 
 export default function Hero(props) {
   return (
@@ -19,7 +18,6 @@ export default function Hero(props) {
         </div>
         <HeroForm />
       </div>
-      <FeaturedWrapper />
     </Container>
   );
 }

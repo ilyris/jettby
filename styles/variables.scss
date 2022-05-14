@@ -8,14 +8,15 @@ $secondary: #949494 !default;
 $green: #217426 !default;
 $white: #fff !default;
 $black: #000 !default;
-
+$lightblue: #1580ff;
+$darkgrey: #323232;
 // Shadow
 $box-shadow-sm: 0 0.125rem 0.35rem rgba($black, 0.35) !default;
 
 // typography
 $h1-font-size: (30px * 2) !default;
-$font-family-sans-serif: "Open Sans", sans-serif;
-$heading-font-family: "Koulen", cursive;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$heading-font-family: 'Koulen', cursive;
 
 // Nabar
 $navbar-padding-x: 40px;
@@ -50,7 +51,7 @@ $form-floating-label-transform: scale(0.9) translateY(-1.2rem)
   translateX(0.85rem);
 $form-floating-label-opacity: 1;
 
-@import "bootstrap/scss/bootstrap.scss";
+@import 'bootstrap/scss/bootstrap.scss';
 
 :export {
   secondary: $secondary;
