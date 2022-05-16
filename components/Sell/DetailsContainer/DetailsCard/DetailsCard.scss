@@ -76,8 +76,16 @@
               display: flex;
               justify-content: space-between;
               border: 0;
+              font-size: 14px;
+              margin-top: 5px;
+              border-bottom: 1px solid $secondary;
+              padding: 05px 0;
+
               span {
                 text-transform: capitalize;
+                &:last-of-type {
+                  text-align: right;
+                }
               }
             }
           }

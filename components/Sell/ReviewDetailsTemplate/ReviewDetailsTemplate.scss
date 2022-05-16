@@ -1,0 +1,48 @@
+.ReviewDetailsTemplate {
+  display: flex;
+  flex-flow: row wrap;
+
+  h4 {
+    width: 100%;
+  }
+  &--info {
+    box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.171);
+    padding: 20px;
+    flex-basis: 65%;
+    p {
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 5px 0;
+
+      span {
+        text-transform: capitalize;
+
+        &:last-of-type {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &--car {
+    flex-basis: 30%;
+    margin-left: 40px;
+    background-color: red;
+    height: fit-content;
+  }
+
+  &--buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 65%;
+    margin-top: 20px;
+    button {
+      width: 30%;
+      padding: 15px 20px;
+      font-size: 20px;
+    }
+  }
+}

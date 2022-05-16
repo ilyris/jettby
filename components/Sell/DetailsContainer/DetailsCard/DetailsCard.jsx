@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 
-export default function DetailsCard({ formState }) {
-  const [vinData, setVinData] = useState(
-    JSON.parse(window.localStorage.getItem("vinDetails"))
-  );
+export default function DetailsCard({ formState, vinData }) {
   const [cardState, setCardState] = useState(formState);
 
   useEffect(() => {
@@ -21,7 +18,7 @@ export default function DetailsCard({ formState }) {
       </Card.Header>
       <Card.Body>
         <div className="img"></div>
-        <div class="text-container">
+        <div className="text-container">
           {Object.keys(formState).map((key, i) => {
             if (
               i >= 8 ||
@@ -37,7 +34,7 @@ export default function DetailsCard({ formState }) {
               </div>
             );
           })}
-          {Object.keys(formState).length && (
+          {Boolean(Object.keys(formState).length) && (
             <Accordion>
               <Accordion.Header>See More</Accordion.Header>
               <Accordion.Body>
