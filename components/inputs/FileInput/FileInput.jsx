@@ -24,7 +24,6 @@ import { setAlertMessage, resetAlert } from "../../../redux/actions";
 
 export default function FileInput({ label, type, cid, name }) {
   const dispatch = useDispatch();
-
   const [images, setImages] = useState([]);
   const [files, setFiles] = useState([]);
 
@@ -78,7 +77,7 @@ export default function FileInput({ label, type, cid, name }) {
       formData.append("upload_preset", "Jettby");
 
       axios
-        .post(`https://api.cloudinary.com/v1_1/sieren/image/upload`, formData, {
+        .post(process.env.NEXT_PUBLIC_CLOUDINARY_API, formData, {
           onUploadProgress: () => {
             if (itemsRef.current[i] == undefined) return;
             if (!itemsRef.current[i].classList.contains("loaded")) {
