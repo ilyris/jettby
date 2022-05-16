@@ -18,15 +18,6 @@ export const getVinInfo = async (vin) => {
       `https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/${vin}?format=json`
     )
     .then((res) => {
-      console.log(res);
-      // remove empty values
-      // const data = res.data.Results.filter(
-      //   (obj) =>
-      //     obj.Value &&
-      //     obj.Value !== "Not Applicable" &&
-      //     obj.Value !== "6" &&
-      //     obj.Value !== "6 - Incomplete VIN"
-      // );
       return res.data.Results[0];
     })
     .catch((err) => console.log(err));

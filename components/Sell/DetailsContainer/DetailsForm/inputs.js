@@ -141,13 +141,6 @@ export const inputs = {
       component: "input",
     },
     {
-      label: "Car Photos",
-      placeholder: "11111",
-      cid: "photoControl",
-      type: "text",
-      component: "input",
-    },
-    {
       label: "Additional Information",
       placeholder: "Add some notes about the car here",
       cid: "additionalInformationControl",
@@ -155,4 +148,14 @@ export const inputs = {
       component: "textarea",
     },
   ],
+  step6: [
+    {
+      label: "Upload Car Photos (optional)",
+      placeholder: "",
+      cid: "photoControl",
+      type: "file",
+      component: "input",
+    },
+  ],
+  step7: {},
 };

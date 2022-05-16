@@ -9,5 +9,8 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  Images: {
+    domains: ["http://localhost:3000/"],
+  },
   nextConfig,
 };

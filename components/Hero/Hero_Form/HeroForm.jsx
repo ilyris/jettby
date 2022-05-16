@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setModelOptions } from "../../../redux/actions";
+import { setModelOptions, setVinData } from "../../../redux/actions";
 
 // comps
 import Form from "react-bootstrap/Form";
@@ -48,7 +48,6 @@ export default function Heroform({}) {
     plate: "n/a",
     state: "co",
   });
-  const [vinData, setVinData] = useState([]);
 
   const icons = [faMagnifyingGlass, faCar, faWallet, faMap, faMapMarkerAlt];
 
@@ -65,20 +64,15 @@ export default function Heroform({}) {
       : setSellingFormData({ ...sellingFormData, [key]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (e.target.name.includes("buying")) {
       // submit buying
     } else {
       // submit selling
-      const promise = getVinInfo(sellingFormData.vin);
-      promise
-        .then((results) => {
-          setVinData(results);
-          window.localStorage.setItem("vinDetails", JSON.stringify(results));
-          router.push("/sell/details");
-        })
-        .catch((err) => console.log(err));
+      const promise = await getVinInfo(sellingFormData.vin);
+      dispatch(setVinData(promise));
+      router.push("/sell/details");
     }
   };
 
