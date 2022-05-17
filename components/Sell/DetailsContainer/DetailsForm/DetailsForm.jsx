@@ -18,6 +18,7 @@ export default function Detailsform({
     if (e.target.name == "next") {
       const stepCount = Number(e.target.getAttribute("data-step"));
       setStep(stepCount + 1);
+      window.localStorage.setItem("details", JSON.stringify(values));
     } else {
       setStep(step - 1);
     }

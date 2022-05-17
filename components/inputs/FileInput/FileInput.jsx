@@ -20,7 +20,11 @@ import { SRLWrapper } from "simple-react-lightbox";
 
 // redux
 import { useDispatch } from "react-redux";
-import { setAlertMessage, resetAlert } from "../../../redux/actions";
+import {
+  setAlertMessage,
+  resetAlert,
+  setSellerImages,
+} from "../../../redux/actions";
 
 export default function FileInput({ label, type, cid, name }) {
   const dispatch = useDispatch();
@@ -119,6 +123,7 @@ export default function FileInput({ label, type, cid, name }) {
 
   useEffect(() => {
     itemsRef.current = itemsRef.current.slice(0, images.length);
+    dispatch(setSellerImages(images));
   }, [images.length]);
 
   return (
