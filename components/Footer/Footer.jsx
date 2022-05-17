@@ -1,9 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 
-// primary background
-// links color secondary
-
 const Footer = () => {
   return (
     <footer className='footer'>

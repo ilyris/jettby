@@ -1,15 +1,15 @@
-.Featured {
-  .Featured--title {
-    font-family: Helvetica;
+.featured--wrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .featured--title {
     color: $primary;
     text-align: center;
-    margin: 30px;
     font-size: 3rem;
     font-weight: 600;
   }
 
-  .Featured--desc {
-    font-family: Helvetica;
+  .featured--desc {
     text-align: center;
     font-size: 1.5rem;
     color: darkgrey;
@@ -17,9 +17,26 @@
     width: 50%;
   }
 
-  .Featured-Card-Wrapper {
+  .featured-card-wrapper {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
+  }
+
+  > div {
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .featured--button {
+    background-color: $lightblue;
+    color: $white;
+    border: none;
+    text-align: center;
+    border-radius: 0;
   }
 }

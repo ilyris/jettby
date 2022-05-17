@@ -1,29 +1,32 @@
 @import '../../../../styles/variables.scss';
 
-.FeaturedCard {
+.featuredCard {
   flex-basis: 32%;
   margin-bottom: 40px;
+
   .featuredCard--wrapper {
     background: $white;
     padding: 0.7rem;
     padding-bottom: 0;
-    font-family: Arial, Helvetica, sans-serif;
     margin-top: 5px;
-    h3 {
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      span {
-        color: $lightblue;
-      }
-    }
-    h5 {
-      font-family: Arial, Helvetica, sans-serif;
-      margin-top: 5px;
+
+    .featured--card--title {
+      font-family: 'Open Sans';
+      margin-top: 10px;
       display: flex;
       justify-content: space-between;
       color: $lightblue;
+    }
+    .featured--card--model {
+      font-family: 'Open Sans';
+      margin-top: 5px;
+      display: flex;
+      font-weight: 600;
+      justify-content: space-between;
+
+      span {
+        color: $lightblue;
+      }
     }
 
     p {
@@ -32,6 +35,10 @@
       margin-top: 5px;
       font-size: 1.2rem;
       color: $secondary;
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 0.8rem;
+      }
+
       .location--icon {
         height: 20px;
         margin-right: 6px;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { Card } from 'react-bootstrap';
 
 const FeaturedCard = ({
   carPicture,
@@ -11,21 +11,20 @@ const FeaturedCard = ({
   carLocation,
 }) => {
   return (
-    <div className='FeaturedCard'>
+    <Card className='featuredCard'>
       <div className='featuredCard--wrapper'>
-        <Image src={carPicture} alt={carTitle} width={550} height={400} />
-        <h5>{carMake}</h5>
-        <h3>
+        <Card.Img variant='top' src={carPicture.src} alt={carTitle} />
+        <Card.Title className='featured--card--title'>{carMake}</Card.Title>
+        <Card.Title className='featured--card--model'>
           {carTitle}
           <span>${carPrice}</span>
-        </h3>
-
-        <p>
+        </Card.Title>
+        <Card.Text>
           <FontAwesomeIcon className='location--icon' icon={faLocationDot} />
           {carLocation}
-        </p>
+        </Card.Text>
       </div>
-    </div>
+    </Card>
   );
 };
 

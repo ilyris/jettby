@@ -56,3 +56,7 @@ $form-floating-label-opacity: 1;
 :export {
   secondary: $secondary;
 }
+
+// Media Queries
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
