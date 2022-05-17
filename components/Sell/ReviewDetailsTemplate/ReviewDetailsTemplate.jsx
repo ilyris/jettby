@@ -33,7 +33,6 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
         <div className="ReviewDetailsTemplate--info__images">
           <AwesomeSlider animation="cubeAnimation">
             {images.map((image, i) => {
-              console.log(image);
               return (
                 <div>
                   <img src={image.b64} name={image.name} />
