@@ -20,7 +20,11 @@ export const renderStepInputs = (data, step, Component) => {
       return data.step5.map((data) => {
         return <Component inputData={data} />;
       });
+    case 6:
+      return data.step6.map((data) => {
+        return <Component inputData={data} />;
+      });
     default:
-      return "eat my ass";
+      return "End of life";
   }
 };

@@ -3,6 +3,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { Field } from "react-final-form";
 import Option from "../Option";
+import FileInput from "../FileInput/FileInput";
 
 export default function FloatingInput({ inputData }) {
   const {
@@ -35,7 +36,6 @@ export default function FloatingInput({ inputData }) {
         <>
           <Form.Label>{label}</Form.Label>
           {options.map((value) => {
-            console.log(component);
             return (
               <div>
                 <Field
@@ -80,6 +80,9 @@ export default function FloatingInput({ inputData }) {
             );
           })}
         </>
+      )}
+      {type == "file" && (
+        <FileInput name={name} type={type} label={label} cid={cid} />
       )}
     </>
   );
