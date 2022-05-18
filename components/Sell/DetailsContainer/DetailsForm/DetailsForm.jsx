@@ -83,9 +83,7 @@ export default function Detailsform({
           <h6 className="mb-3">
             Please provide more information about your vehicle
           </h6>
-
           {renderStepInputs(inputs, step, FloatingInput)}
-
           <div>
             {step > 1 && (
               <Button

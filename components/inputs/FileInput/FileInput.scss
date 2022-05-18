@@ -1,0 +1,144 @@
+.SRLControls {
+  button {
+    display: none;
+    &:last-of-type {
+      display: block;
+    }
+  }
+}
+.FileInput {
+  &--upload {
+    padding: 20px;
+    width: 100%;
+    height: 250px;
+    border: 3px dashed #161a3d;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    svg {
+      font-size: 50px;
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+      font-size: 1.25rem;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.Upload--container {
+  > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    .Input--image__card {
+      position: relative;
+      overflow: hidden;
+      background-color: #ffffff;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-shadow: 2px 1px 2px 2px #0000002b;
+      width: 47%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:hover {
+        .overlay {
+          bottom: 5px;
+        }
+        > svg {
+          transform: translateY(-100px);
+        }
+      }
+      &.isLoading {
+        opacity: 0.5;
+        background-color: #b1b1b138;
+        .spinner {
+          display: inline-block;
+        }
+      }
+      &.loaded {
+        .check {
+          display: inline-block;
+        }
+      }
+
+      > svg {
+        font-size: 1.5rem;
+        width: 20px;
+        margin: 0 20px;
+        transition: all ease-in-out 350ms;
+
+        &.spinner {
+          display: none;
+          animation: spin 1500ms linear infinite;
+        }
+
+        &.check {
+          display: none;
+          color: $green;
+        }
+      }
+    }
+
+    .overlay {
+      transition: all ease-in-out 350ms;
+      position: absolute;
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      bottom: -70px;
+      z-index: 10;
+      padding: 20px;
+      border-radius: 50%;
+      right: 0;
+      margin: 0 15px 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      svg {
+        color: white;
+      }
+    }
+
+    > span {
+      > span {
+        position: relative;
+        overflow: hidden;
+        img {
+          width: 100px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

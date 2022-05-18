@@ -10,13 +10,18 @@ import "../styles/globals.scss";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 
+// lightbox
+import SimpleReactLightbox from "simple-react-lightbox";
+
 export default function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <SSRProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SimpleReactLightbox>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SimpleReactLightbox>
       </SSRProvider>
     </Provider>
   );

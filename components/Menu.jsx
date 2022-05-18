@@ -7,13 +7,21 @@ import Container from "react-bootstrap/Container";
 
 const Menu = () => {
   return (
-    <Navbar fixed="true" expand="lg" bg="primary" variant="dark">
+    <Navbar
+      fixed="true"
+      expand="lg"
+      bg="primary"
+      variant="dark"
+      className="Menu"
+    >
       <Container>
-        <Navbar.Brand href="#home">Jettby</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src="/logo_white.svg" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
