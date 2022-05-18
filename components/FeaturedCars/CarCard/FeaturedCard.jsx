@@ -11,8 +11,8 @@ const FeaturedCard = ({
   carLocation,
 }) => {
   return (
-    <Card className='featuredCard'>
-      <div className='featuredCard--wrapper'>
+    <Card className='FeaturedCard'>
+      <div className='FeaturedCard--wrapper'>
         <Card.Img variant='top' src={carPicture.src} alt={carTitle} />
         <Card.Title className='featured--card--title'>{carMake}</Card.Title>
         <Card.Title className='featured--card--model'>

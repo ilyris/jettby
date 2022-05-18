@@ -8,14 +8,14 @@ const { carTitle, carPicture, carMake, carPrice, carLocation } = carCardsData;
 
 const FeaturedWrapper = () => {
   return (
-    <section className='featured--wrapper'>
+    <section className='FeaturedWrapper'>
       <Container>
-        <h3 className='featured--title'>Lets Find Your Dream Car</h3>
-        <h5 className='featured--desc'>
+        <h3>Lets Find Your Dream Car</h3>
+        <h5>
           We recommend the very best and newest cars today and also a friendly
           price for you
         </h5>
-        <div className='featured-card-wrapper'>
+        <div>
           {carCardsData.map((card) => {
             return (
               <FeaturedCard
@@ -30,9 +30,7 @@ const FeaturedWrapper = () => {
           })}
         </div>
         <div>
-          <Button variant='primary' className='featured--button'>
-            See More
-          </Button>
+          <Button variant='primary'>See More</Button>
         </div>
       </Container>
     </section>
@@ -41,5 +39,6 @@ const FeaturedWrapper = () => {
 
 export default FeaturedWrapper;
 
-// make responsive
-// calc function for rems (if columns doesn't work)
+// Change titles to cap classnames
+// ride bootstrap class for titles on cards and other elements
+// figure out how to get rid of css and css map files

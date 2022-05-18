@@ -1,10 +1,10 @@
 @import '../../../../styles/variables.scss';
 
-.featuredCard {
+.FeaturedCard {
   flex-basis: 32%;
   margin-bottom: 40px;
 
-  .featuredCard--wrapper {
+  &--wrapper {
     background: $white;
     padding: 0.7rem;
     padding-bottom: 0;
@@ -39,7 +39,7 @@
         font-size: 0.8rem;
       }
 
-      .location--icon {
+      svg {
         height: 20px;
         margin-right: 6px;
         color: $lightblue;
