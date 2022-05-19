@@ -7,7 +7,6 @@ export const getCoordinates = (callback) => {
 };
 
 export const returnZip = async (lat, long) => {
-  console.log('in returnZip', lat, long);
   let zip = await axios
     .get(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.NEXT_PUBLIC_MAP_KEY}`
