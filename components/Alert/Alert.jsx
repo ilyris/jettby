@@ -1,10 +1,10 @@
-import React from "react";
-import BSAlert from "react-bootstrap/Alert";
-import Container from "react-bootstrap/Container";
+import React from 'react';
+import BSAlert from 'react-bootstrap/Alert';
+import Container from 'react-bootstrap/Container';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function Alert() {
   const message = useSelector((state) => state.alert.message);
@@ -12,7 +12,7 @@ export default function Alert() {
 
   const dropIn = {
     hidden: {
-      y: "-100vh",
+      y: '-100vh',
       opacity: 0,
     },
     visible: {
@@ -20,24 +20,23 @@ export default function Alert() {
       opacity: 1,
       transition: {
         duration: 3,
-        type: "spring",
+        type: 'spring',
         damping: 50,
         stiffness: 300,
       },
     },
     exit: {
-      y: "100vh",
+      y: '100vh',
       opacity: 1,
     },
   };
   return (
     <motion.div
-      className="Alert"
+      className='Alert'
       variants={dropIn}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+      initial='hidden'
+      animate='visible'
+      exit='exit'>
       <Container>
         <BSAlert variant={variant}>
           <p>{message}</p>
