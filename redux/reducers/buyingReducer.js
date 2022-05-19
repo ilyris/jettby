@@ -3,7 +3,7 @@ const initialState = {
   model: '',
   price: '',
   distance: 30,
-  zip_code: 11111,
+  zip_code: 55555,
 };
 
 const buyingReducer = (state = initialState, action) => {
