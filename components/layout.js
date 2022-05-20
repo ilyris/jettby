@@ -15,7 +15,6 @@ import {
 } from '../helpers/api-calls/map-calls';
 
 export default function Layout({ children }) {
-  const [zipState, setZipState] = useState();
   const hasAlert = useSelector((state) => state.alert.isActive);
   const buying = useSelector((state) => state.buying);
   const dispatch = useDispatch();
