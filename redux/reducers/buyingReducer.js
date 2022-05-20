@@ -12,6 +12,11 @@ const buyingReducer = (state = initialState, action) => {
       return {
         car: action.payload,
       };
+    case 'SET_ZIP':
+      return {
+        ...state,
+        zip_code: action.payload,
+      };
     default:
       return state;
   }
