@@ -4,12 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { useSelector } from 'react-redux';
 import Option from '../../../inputs/Option';
 
-import {
-  getZip,
-  getCoordinates,
-  returnZip,
-} from '../../../../helpers/api-calls/map-calls';
-
 export default function Inputcard({
   type,
   icon,
@@ -19,24 +13,10 @@ export default function Inputcard({
   arrow = null,
   changeFunc,
 }) {
-  const [zipState, setZipState] = useState();
-
   const modelList = useSelector(
     (state) => state.modelOptionReducer.inputs[1].options
   );
-
-  // Get zipCode
-  useEffect(() => {
-    getCoordinates(getZip);
-  }, []);
-
-  const getZip = async (position) => {
-    const { latitude, longitude } = position.coords;
-    let zipReturned = returnZip(latitude, longitude);
-    zipReturned.then((res) => {
-      return setZipState(res);
-    });
-  };
+  const buying = useSelector((state) => state.buying);
 
   return (
     <div className='InputCard' data-key={label}>
@@ -63,8 +43,9 @@ export default function Inputcard({
         ) : (
           <Form.Control
             name={label}
+            value={buying.zip_code}
             type='text'
-            placeholder={zipState}
+            placeholder=''
             onChange={changeFunc}
           />
         )}

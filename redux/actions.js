@@ -1,9 +1,10 @@
 // Actions
-import { SET_MODEL_OPTIONS } from "./actionTypes";
-import { SET_VIN_DATA } from "./actionTypes";
-import { SET_HAS_IMAGES_STAGED } from "./actionTypes";
-import { RESET_ALERT, SET_MESSAGE } from "./actionTypes";
-import { SET_SELLER_IMAGES } from "./actionTypes";
+import { SET_MODEL_OPTIONS } from './actionTypes';
+import { SET_VIN_DATA } from './actionTypes';
+import { SET_HAS_IMAGES_STAGED } from './actionTypes';
+import { RESET_ALERT, SET_MESSAGE } from './actionTypes';
+import { SET_ZIP } from './actionTypes';
+import { SET_SELLER_IMAGES } from './actionTypes';
 
 export const setModelOptions = (options) => {
   return {
@@ -37,6 +38,14 @@ export const resetAlert = () => {
     type: RESET_ALERT,
   };
 };
+
+export const setZipCode = (zip) => {
+  return {
+    type: SET_ZIP,
+    payload: zip,
+  };
+};
+
 export const setSellerImages = (arr) => {
   return {
     type: SET_SELLER_IMAGES,
