@@ -2,6 +2,7 @@ const initialState = {
   vinData: {},
   licensePlate: null,
   state: null,
+  images: [],
 };
 
 const sellingReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const sellingReducer = (state = initialState, action) => {
         ...state,
         licensePlate: action.payload.licensePlate,
         state: action.payload.state,
+      };
+    case "SET_SELLER_IMAGES":
+      return {
+        ...state,
+        images: action.payload,
       };
     default:
       return state;
