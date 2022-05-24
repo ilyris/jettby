@@ -1,0 +1,14 @@
+.Alert {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 25px;
+  margin-top: 40px;
+  width: 100%;
+  z-index: 10;
+}
+
+.Alert p {
+  margin-bottom: 0;
+  text-align: center;
+}
+/*# sourceMappingURL=Alert.css.map */
