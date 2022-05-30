@@ -1,9 +1,9 @@
 // libs
 import React from "react";
+import axios from "axios";
 
 // components
 import Button from "../../inputs/Button/Button";
-import Image from "next/image";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "react-awesome-slider/dist/styles.css";
@@ -18,6 +18,10 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
   const onSubmit = (e, formState) => {
     console.log(formState);
     // map api call here to back-end
+    axios
+      .post("/api/sell/post", { formState })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -27,7 +31,7 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
       <div className="ReviewDetailsTemplate--info">
         <div className="ReviewDetailsTemplate--info__heading">
           <h2>{`${formState["make"]} ${formState["model"]} ${formState["year"]}`}</h2>
-          <h4>{formState["milage"]}</h4>
+          <h4>{formState["mileage"]}</h4>
           <h4>{formState["listing_price"]}</h4>
         </div>
         <div className="ReviewDetailsTemplate--info__images">
@@ -58,7 +62,7 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
             </p>
             <p>
               <span>Engine:</span>
-              {formState["Engine"]}
+              {formState["engine"]}
             </p>
             <p>
               <span>VIN:</span>

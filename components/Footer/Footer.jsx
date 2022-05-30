@@ -1,39 +1,37 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
+import React from "react";
+import Container from "react-bootstrap/Container";
 
 // primary background
 // links color secondary
 
 const Footer = () => {
   return (
-    <footer className='footer'>
+    <footer className="Footer">
       <Container>
-        <div className='footer--wrapper'>
-          <div className='footer--top'>
-            <div className='footer--top__left'>
-              <div className='logo'>
-                <h3>Jettby</h3>
-              </div>
+        <div className="Footer--wrapper">
+          <div className="Footer--wrapper__top">
+            <div>
+              <img src="/logo_white.svg" />
             </div>
-            <div className='footer--top__right'>
+            <div>
               <p>Buying and Selling</p>
               <ul>
                 <li>
-                  <a href='#home'>Link</a>
+                  <a href="#home">Link</a>
                 </li>
                 <li>
-                  <a href='#home'>Link</a>
+                  <a href="#home">Link</a>
                 </li>
                 <li>
-                  <a href='#home'>Link</a>
+                  <a href="#home">Link</a>
                 </li>
                 <li>
-                  <a href='#home'>Link</a>
+                  <a href="#home">Link</a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className='footer--bottom'>
+          <div className="Footer--wrapper__bottom">
             <p>&copy; Jettby.com. All rights reserved.</p>
           </div>
         </div>
