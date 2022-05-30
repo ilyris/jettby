@@ -1,6 +1,6 @@
 @import "../styles/variables.scss";
 
-.footer {
+.Footer {
   background: $primary;
   color: $secondary;
   height: 100%;
@@ -8,62 +8,66 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
-}
 
-.footer--wrapper {
-  height: 100%;
+  &--wrapper {
+    height: 100%;
 
-  .footer--top {
-    height: 90%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-    .footer--top__left {
-      width: 20%;
-      margin-right: 10rem;
-      .logo {
-        color: $primary;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 170px;
-        width: 170px;
-        background: $white;
-        border-radius: 50%;
-        .logo > h3 {
-          margin: 0;
-          font-size: 3rem;
-          color: black;
+    &__top {
+      height: 90%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 2rem 0;
+      > div {
+        &:first-of-type {
+          // left
+          width: 8%;
+          margin-right: 10rem;
+          .logo {
+            color: $primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            background: $white;
+            border-radius: 50%;
+            .logo > h3 {
+              margin: 0;
+              font-size: 3rem;
+              color: black;
+            }
+          }
+        }
+
+        &:last-of-type {
+          // right
+          width: 78%;
+          align-self: flex-start;
+          p {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            a {
+              color: $secondary !important;
+              text-decoration: none;
+            }
+          }
         }
       }
     }
-    .footer--top__right {
-      width: 78%;
-      align-self: flex-start;
+    &__bottom {
+      height: 50px;
+      border-top: 2px solid $white;
+      text-align: right;
+
       p {
-        font-weight: bold;
-        margin-bottom: 0.3rem;
+        margin-top: 5px;
       }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        a {
-          color: $secondary !important;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
-  .footer--bottom {
-    height: 50px;
-    border-top: 2px solid $white;
-    text-align: right;
-
-    p {
-      margin-top: 5px;
     }
   }
 }

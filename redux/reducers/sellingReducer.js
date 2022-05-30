@@ -3,6 +3,7 @@ const initialState = {
   licensePlate: null,
   state: null,
   images: [],
+  errors: {},
 };
 
 const sellingReducer = (state = initialState, action) => {
@@ -22,6 +23,19 @@ const sellingReducer = (state = initialState, action) => {
       return {
         ...state,
         images: action.payload,
+      };
+    case "SET_ERRORS":
+      const keys = Object.keys(action.payload);
+      const values = Object.values(action.payload);
+      const errors = {};
+
+      keys.forEach((key, i) => {
+        errors[key] = values[i];
+      });
+
+      return {
+        ...state,
+        errors,
       };
     default:
       return state;

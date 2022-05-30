@@ -46,3 +46,12 @@ h5 {
   padding: 0;
   background-color: rgba(gray, 0.1);
 }
+
+.form-control.is-invalid {
+  background: unset;
+}
+.form-select.is-invalid:not([multiple]):not([size]),
+.form-select.is-invalid:not([multiple])[size="1"] {
+  border: 1px solid $danger;
+  background: unset;
+}

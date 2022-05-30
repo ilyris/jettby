@@ -1,11 +1,16 @@
 export const inputs = {
   step1: [
     {
-      label: "Milage",
+      label: "Mileage",
       placeholder: "11111",
-      cid: "milageControl",
+      cid: "mileageControl",
       type: "text",
       component: "input",
+      isRequired: true,
+      length: {
+        min: 1,
+        max: 6,
+      },
     },
     {
       label: "Zip Code",
@@ -13,6 +18,11 @@ export const inputs = {
       cid: "zipControl",
       type: "text",
       component: "input",
+      isRequired: true,
+      length: {
+        min: 5,
+        max: 5,
+      },
     },
     {
       label: "Exterior Color",
@@ -20,6 +30,7 @@ export const inputs = {
       cid: "exteriorColorControl",
       type: "text",
       component: "input",
+      isRequired: true,
     },
     {
       label: "Interior Color",
@@ -27,6 +38,7 @@ export const inputs = {
       cid: "interiorColorControl",
       type: "text",
       component: "input",
+      required: false,
     },
   ],
   step2: [
@@ -36,6 +48,7 @@ export const inputs = {
       cid: "ownerControl",
       type: "radio",
       component: "input",
+      isRequired: true,
       options: ["yes", "no"],
     },
     {
@@ -44,6 +57,7 @@ export const inputs = {
       cid: "drivetrainControl",
       type: "select",
       component: "select",
+      isRequired: true,
       options: ["Select drivetrain"],
     },
     {
@@ -52,6 +66,7 @@ export const inputs = {
       cid: "transmissionControl",
       type: "select",
       component: "select",
+      isRequired: true,
       options: ["Select transmission"],
     },
     {
@@ -60,12 +75,13 @@ export const inputs = {
       cid: "engineControl",
       type: "select",
       component: "select",
+      isRequired: true,
       options: ["Select engine"],
     },
   ],
   step3: [
     {
-      label: "Convience Options",
+      label: "Convience Options (optional)",
       placeholder: "",
       cid: "convienceControl",
       type: "checkbox",
@@ -82,7 +98,7 @@ export const inputs = {
       ],
     },
     {
-      label: "Entertainment Options",
+      label: "Entertainment Options (optional)",
       placeholder: "",
       cid: "entertainmentControl",
       type: "checkbox",
@@ -97,7 +113,7 @@ export const inputs = {
       ],
     },
     {
-      label: "Exterior Options",
+      label: "Exterior Options (optional)",
       placeholder: "",
       cid: "exteriorControl",
       type: "checkbox",
@@ -107,7 +123,7 @@ export const inputs = {
   ],
   step4: [
     {
-      label: "Saftey Options",
+      label: "Saftey Options (optional)",
       placeholder: "",
       cid: "safteyControl",
       type: "checkbox",
@@ -124,7 +140,7 @@ export const inputs = {
       ],
     },
     {
-      label: "Seating Options",
+      label: "Seating Options (optional)",
       placeholder: "",
       cid: "seatingControl",
       type: "checkbox",
@@ -139,13 +155,22 @@ export const inputs = {
       cid: "listingPriceControl",
       type: "text",
       component: "input",
+      isRequired: true,
+      length: {
+        min: 2,
+        max: 8,
+      },
     },
     {
-      label: "Additional Information",
+      label: "Additional Information (optional)",
       placeholder: "Add some notes about the car here",
       cid: "additionalInformationControl",
       type: "textarea",
       component: "textarea",
+      length: {
+        min: 10,
+        max: 500,
+      },
     },
   ],
   step6: [

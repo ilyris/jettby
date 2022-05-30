@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Jettby | private rebuilt car sales</title>
-        <meta name="description" content="eat my peepee" />
+        <meta name="description" content="rebuilt private party car sales" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
