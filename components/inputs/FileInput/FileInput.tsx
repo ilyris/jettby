@@ -20,43 +20,27 @@ import { SRLWrapper } from "simple-react-lightbox";
 
 // redux
 import { useDispatch } from "react-redux";
-import {
-  setAlertMessage,
-  resetAlert,
-  setSellerImages,
-} from "../../../redux/actions";
+import { setAlertMessage, setSellerImages } from "../../../redux/actions";
 
 export default function FileInput({ label, type, cid, name }) {
   const dispatch = useDispatch();
+
+  // base64 images
   const [images, setImages] = useState([]);
+
+  // files uploaded by user in client
   const [files, setFiles] = useState([]);
 
+  // successfully uploaded images to cloudinary
+  const [cloudImgs, setCloudImgs] = useState([]);
   const fileInput = useRef(null);
   const itemsRef = useRef([]);
 
-  const handleDupeImages = (arr) => {
-    const uniqueFile = new Set();
-    const unique = arr.filter((file) => {
-      const isDuplicate = uniqueFile.has(file.name);
-
-      uniqueFile.add(file.name);
-
-      if (!isDuplicate) {
-        return true;
-      }
-
-      return false;
-    });
-
-    return unique;
-  };
-
   const handleChange = async (e) => {
     // Set Files
-    if (handleDupeImages([...files, ...e.target.files]).length >= 20) {
+    if ([...e.target.files].length >= 20) {
       setAlertMessage("Exceeded maximum images of 20", "danger");
     }
-    await setFiles(handleDupeImages([...files, ...e.target.files]));
 
     // Create Images
     let imagesSrcs = Array.from(e.target.files).map((file) => {
@@ -72,48 +56,102 @@ export default function FileInput({ label, type, cid, name }) {
     });
 
     let res = await Promise.all(imagesSrcs);
-    setImages(handleDupeImages([...images, ...res]));
 
-    // Trigger cloudinary call / display loading || loaded assests
-    handleDupeImages([...files, ...e.target.files]).forEach((file, i) => {
+    [...e.target.files].forEach(async (file, i) => {
+      // const sanitizedFileName = file.name.substring(
+      //   0,
+      //   file.name.lastIndexOf(".")
+      // );
+      setFiles([...files, ...e.target.files]);
+      setImages([...images, ...res]);
+
+      // if (cloudinaryImages.length) {
+      //   let flag = false;
+      //   cloudinaryImages.forEach((img) => {
+      //     console.log(sanitizedFileName === img.original_filename);
+      //     if (sanitizedFileName === img.original_filename) {
+      //       flag = true;
+      //       return;
+      //     }
+      //   });
+      //   if (flag) return;
+      // }
+
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "Jettby");
 
-      axios
-        .post(process.env.NEXT_PUBLIC_CLOUDINARY_API, formData, {
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_CLOUDINARY_API,
+        formData,
+        {
           onUploadProgress: () => {
             if (itemsRef.current[i] == undefined) return;
             if (!itemsRef.current[i].classList.contains("loaded")) {
               itemsRef.current[i].classList.add("isLoading");
             }
           },
-        })
-        .then(() => {
-          itemsRef.current[i].classList.remove("isLoading");
-          itemsRef.current[i].classList.add("loaded");
-        })
-        .catch((err) => {
-          dispatch(
-            setAlertMessage("Failed to upload images to server", "danger")
-          );
-        });
+        }
+      );
+      try {
+        // save photo data to local state and the url to the database
+        console.log(response.data);
+        console.log("setting state");
+        // setCloudImgs([response.data, ...cloudImgs]);
+        setCloudImgs([...cloudImgs, response.data]);
+        debugger;
+        console.log("done!");
+        itemsRef.current[i].classList.remove("isLoading");
+        itemsRef.current[i].classList.add("loaded");
+
+        dispatch(
+          setAlertMessage(
+            "Your images have been uploaded successfully!",
+            "success"
+          )
+        );
+      } catch (err) {
+        console.log(err);
+        dispatch(
+          setAlertMessage("Failed to upload images to server", "danger")
+        );
+      }
     });
-
-    dispatch(
-      setAlertMessage("Your images have been uploaded successfully!", "success")
-    );
-
-    // Reset Alert
-    setTimeout(() => {
-      dispatch(resetAlert());
-    }, 4500);
   };
 
   const handleDelete = (name) => {
+    console.log(name);
+    const sanitizedName = name.substring(0, name.lastIndexOf("."));
+
+    // filter files based on the image name
     const filteredFiles = images.filter((image) => {
       return image.name !== name;
     });
+
+    // filter cloudinary images based on if the file.name === cloudinaryImg.name
+    // const cloudinaryImgToDelete = cloudinaryImages.filter((img) => {
+    //   console.log(img.original_filename);
+    //   console.log(sanitizedName);
+    //   return img.original_filename === sanitizedName;
+    // });
+    console.log(cloudinaryImages);
+    return;
+
+    // api call to delete
+    axios
+      .post(`https://api.cloudinary.com/v1_1/sieren/delete_by_token`, {
+        token: cloudinaryImgToDelete[0].delete_token,
+      })
+      .then((res) => {
+        cloudinaryImages = [...cloudinaryImages].filter((img) => {
+          return img.original_filename !== sanitizedName;
+        });
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
+    console.log(filteredFiles);
+    setFiles(filteredFiles);
     setImages(filteredFiles);
   };
 
@@ -158,6 +196,7 @@ export default function FileInput({ label, type, cid, name }) {
                 <div
                   className="Input--image__card"
                   ref={(el) => (itemsRef.current[i] = el)}
+                  key={image.name}
                 >
                   <div
                     className="overlay"

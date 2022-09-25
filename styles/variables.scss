@@ -51,6 +51,9 @@ $form-floating-label-transform: scale(0.9) translateY(-1.2rem)
 $form-floating-label-opacity: 1;
 $form-floating-line-height: 2.25;
 $form-select-indicator: unset;
+
+// Breakpoints
+$breakpoint-tablet: "520px";
 @import "bootstrap/scss/bootstrap.scss";
 
 :export {

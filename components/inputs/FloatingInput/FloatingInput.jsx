@@ -7,7 +7,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { Field } from "react-final-form";
 import Option from "../Option";
-import FileInput from "../FileInput/FileInput";
+import FileInput from "../FileInput/FileInput.tsx";
 
 // helpers
 import { filterCharacters, sanitizeCharacters } from "./errors.js";
@@ -24,7 +24,7 @@ export default function FloatingInput({ inputData }) {
     length,
   } = inputData;
 
-  const errors = useSelector((state) => state.selling.errors);
+  const errors = useSelector((state) => state.rootReducer.selling.errors);
   const name = label.toLowerCase().replace(" ", "_");
 
   // validation

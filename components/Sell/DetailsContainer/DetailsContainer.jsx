@@ -12,7 +12,7 @@ import ReviewDetailsTemplate from "../ReviewDetailsTemplate/ReviewDetailsTemplat
 import { inputs } from "./DetailsForm/inputs.js";
 
 export default function DetailsContainer(props) {
-  const vinData = useSelector((state) => state.selling.vinData);
+  const vinData = useSelector((state) => state.rootReducer.selling.vinData);
 
   const [formState, setFormState] = useState({});
   const [step, setStep] = useState(1);

@@ -14,7 +14,7 @@ export default function Inputcard({
   changeFunc,
 }) {
   const modelList = useSelector(
-    (state) => state.modelOptionReducer.inputs[1].options
+    (state) => state.rootReducer.modelOptionReducer.inputs[1].options
   );
   const buying = useSelector((state) => state.buying);
 
@@ -30,10 +30,10 @@ export default function Inputcard({
             <Form.Select name={label} onChange={changeFunc}>
               {label === "Model"
                 ? modelList.map((model) => {
-                    return <Option value={model} />;
+                    return <Option key={model} value={model} />;
                   })
                 : options.map((option) => {
-                    return <Option value={option} />;
+                    return <Option key={option} value={option} />;
                   })}
             </Form.Select>
             {arrow !== null && (

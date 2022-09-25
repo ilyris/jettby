@@ -1,15 +1,16 @@
-import { applyMiddleware, createStore, compose } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers/rootReducer";
-import thunk from "redux-thunk";
+import sellingTest from "./features/selling/selling";
 
-let composeEnhancers = compose;
-if (typeof window !== "undefined") {
-  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-}
+import thunkMiddleware from "redux-thunk";
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+const store = configureStore({
+  reducer: {
+    rootReducer,
+    sellingTest: sellingTest,
+  },
+  devTools: true,
+  middleware: [thunkMiddleware],
+});
 
 export default store;

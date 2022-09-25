@@ -12,14 +12,14 @@ import "react-awesome-slider/dist/styles.css";
 import { useSelector } from "react-redux";
 
 export default function ReviewDetailsTemplate({ formState, step, setStep }) {
-  const vinData = useSelector((state) => state.selling.vinData);
-  const images = useSelector((state) => state.selling.images);
+  const vinData = useSelector((state) => state.rootReducer.selling.vinData);
+  const images = useSelector((state) => state.rootReducer.selling.images);
 
-  const onSubmit = (e, formState) => {
+  const onSubmit = async (e, formState) => {
     console.log(formState);
     // map api call here to back-end
-    axios
-      .post("/api/sell/post", { formState })
+    const response = await axios
+      .post("/api/post/sell/listing", { formState })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
