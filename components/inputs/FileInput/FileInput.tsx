@@ -21,6 +21,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 // redux
 import { useDispatch } from "react-redux";
 import { setAlertMessage, setSellerImages } from "../../../redux/actions";
+import { setCloudinaryImages } from "../../../redux/features/selling/selling";
 
 export default function FileInput({ label, type, cid, name }) {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ export default function FileInput({ label, type, cid, name }) {
 
     let res = await Promise.all(imagesSrcs);
     setImages(handleDupeImages([...images, ...res]));
-    console.log(e.target);
+
     handleDupeImages([...files, ...e.target.files]).forEach(async (file, i) => {
       const sanitizedFileName = file.name.substring(
         0,
@@ -149,11 +150,10 @@ export default function FileInput({ label, type, cid, name }) {
       .post(`${process.env.NEXT_PUBLIC_CLOUDINARY_API}/delete_by_token`, {
         token: deleteImg[0].delete_token,
       })
-      .then((res) => {
+      .then(() => {
         setCloud(
           [...cloud].filter((img) => img.original_filename !== sanitizedName)
         );
-        console.log(res);
       })
       .catch((err) => console.log(err));
 
@@ -169,6 +169,10 @@ export default function FileInput({ label, type, cid, name }) {
     itemsRef.current = itemsRef.current.slice(0, images.length);
     dispatch(setSellerImages(images));
   }, [images.length]);
+
+  useEffect(() => {
+    dispatch(setCloudinaryImages(cloud));
+  }, [cloud.length]);
 
   return (
     <>

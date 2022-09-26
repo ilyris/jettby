@@ -12,4 +12,5 @@ export const SET_ZIP = "SET_ZIP";
 
 // Seller Details
 export const SET_SELLER_IMAGES = "SET_SELLER_IMAGES";
+export const SET_CLOUDINARY_IMAGES = "SET_CLOUDINARY_IMAGES";
 export const SET_ERRORS = "SET_ERRORS";

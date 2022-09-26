@@ -4,7 +4,11 @@ import { SET_VIN_DATA } from "./actionTypes";
 import { SET_HAS_IMAGES_STAGED } from "./actionTypes";
 import { RESET_ALERT, SET_MESSAGE } from "./actionTypes";
 import { SET_ZIP } from "./actionTypes";
-import { SET_SELLER_IMAGES, SET_ERRORS } from "./actionTypes";
+import {
+  SET_SELLER_IMAGES,
+  SET_CLOUDINARY_IMAGES,
+  SET_ERRORS,
+} from "./actionTypes";
 
 export const setModelOptions = (options) => {
   return {
@@ -49,6 +53,14 @@ export const setZipCode = (zip) => {
 export const setSellerImages = (arr) => {
   return {
     type: SET_SELLER_IMAGES,
+    payload: arr,
+  };
+};
+export const setCloudinaryImages = (arr) => {
+  console.log(arr);
+  debugger;
+  return {
+    type: SET_CLOUDINARY_IMAGES,
     payload: arr,
   };
 };

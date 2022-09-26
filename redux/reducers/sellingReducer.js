@@ -3,6 +3,7 @@ const initialState = {
   licensePlate: null,
   state: null,
   images: [],
+  cloudinaryImages: [],
   errors: {},
 };
 
@@ -23,6 +24,11 @@ const sellingReducer = (state = initialState, action) => {
       return {
         ...state,
         images: action.payload,
+      };
+    case "SET_CLOUDINARY_IMAGES":
+      return {
+        ...state,
+        cloudinaryImages: action.payload,
       };
     case "SET_ERRORS":
       const keys = Object.keys(action.payload);

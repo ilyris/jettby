@@ -26,14 +26,21 @@ export default function Buying() {
         <section>
           {allListings.length &&
             allListings.map((listing) => {
-              const { make, model, year, mileage, listing_price, zip_code } =
-                listing;
-              const title = `${year} ${make} ${model}`;
+              const {
+                make,
+                model,
+                year,
+                mileage,
+                listing_price,
+                zip_code,
+                cloudinary_urls,
+              } = listing;
+              const title = `${make} ${model} (${year})`;
 
               return (
                 <ListingCard
                   key={Number(mileage)}
-                  carPicture={null}
+                  carPicture={cloudinary_urls[0]}
                   carTitle={title}
                   carPrice={listing_price}
                   carLocation={zip_code}

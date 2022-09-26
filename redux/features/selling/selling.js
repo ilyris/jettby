@@ -14,6 +14,7 @@ const initialState = {
   licensePlate: null,
   state: null,
   images: [],
+  cloudinaryImages: [],
   errors: {},
 };
 
@@ -28,6 +29,20 @@ export const fetchVinData = createAsyncThunk(
   }
 );
 
+// const getImgs = (formData) => {
+
+// }
+
+// export const fetchCloudinaryImgs = createAsyncThunk(
+//   "sellingTest/setCloudinaryImgs",
+//   // Declare the type your function argument here:
+//   async (formData) => {
+//     const promise = await getVinInfo(formData);
+//     console.log(getImgs);
+//     // Inferred return type: Promise<MyData>
+//     return promise;
+//   }
+// );
 // await store.dispatch(fetchUserById(3))
 
 export const sellingTest = createSlice({
@@ -36,6 +51,9 @@ export const sellingTest = createSlice({
   reducers: {
     setSellerImages: (state, action) => {
       state.images.push(action.payload);
+    },
+    setCloudinaryImages: (state, action) => {
+      state.cloudinaryImages = [...action.payload];
     },
     setErrors: (state, action) => {
       const keys = Object.keys(action.payload);
@@ -53,10 +71,14 @@ export const sellingTest = createSlice({
     builder.addCase(fetchVinData.fulfilled, (state, action) => {
       state.vinData = action.payload;
     });
+    // builder.addCase(fetchCloudinaryImgs.fulfilled, (state, action) => {
+    //   state.cloudinaryImages.push(action.payload);
+    // });
   },
 });
 
+const { actions, reducer } = sellingTest;
 // Action creators are generated for each case reducer function
-export const { setSellerImages, setErrors } = sellingTest.actions;
+export const { setSellerImages, setCloudinaryImages, setErrors } = actions;
 
-export default sellingTest.reducer;
+export default reducer;

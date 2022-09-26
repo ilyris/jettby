@@ -14,12 +14,13 @@ import { useSelector } from "react-redux";
 export default function ReviewDetailsTemplate({ formState, step, setStep }) {
   const vinData = useSelector((state) => state.rootReducer.selling.vinData);
   const images = useSelector((state) => state.rootReducer.selling.images);
+  const cloudImgs = useSelector((state) => state.sellingTest.cloudinaryImages);
 
   const onSubmit = async (e, formState) => {
     console.log(formState);
     // map api call here to back-end
-    const response = await axios
-      .post("/api/post/sell/listing", { formState })
+    await axios
+      .post("/api/post/sell/listing", { formState, cloudImgs })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
