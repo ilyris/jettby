@@ -101,7 +101,6 @@ const initialState = {
 };
 
 const modelOptionReducer = (state = initialState, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case SET_MODEL_OPTIONS:
       const modelObj = {

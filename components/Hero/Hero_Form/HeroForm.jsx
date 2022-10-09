@@ -30,7 +30,8 @@ export default function Heroform({}) {
   const [formName, setFormName] = useState("buying");
 
   const inputData = useSelector((state) => state.modelOptionReducer.inputs);
-  console.log(inputData);
+  const listingData = useSelector((state) => state.listings);
+
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -76,8 +77,9 @@ export default function Heroform({}) {
           distance: buyingFormData.distance,
           zipcode: buyingFormData.zip_code,
         })
-      );
-      router.push("/buy/buying");
+      ).then(() => {
+        router.push("/buy/buying");
+      });
     } else {
       // submit selling
       const promise = await getVinInfo(sellingFormData.vin);
@@ -123,6 +125,10 @@ export default function Heroform({}) {
                   cid={d.cid}
                   label={d.label}
                   options={d.options}
+                  selected={
+                    buyingFormData[d.label.toLowerCase()] ||
+                    listingData[d.label.toLowerCase()]
+                  }
                   arrow={faChevronDown}
                   changeFunc={handleChange}
                   make={buyingFormData.make}

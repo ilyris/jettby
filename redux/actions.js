@@ -3,7 +3,7 @@ import { SET_MODEL_OPTIONS } from "./actionTypes";
 import { SET_VIN_DATA } from "./actionTypes";
 import { SET_HAS_IMAGES_STAGED } from "./actionTypes";
 import { RESET_ALERT, SET_MESSAGE } from "./actionTypes";
-import { SET_ZIP } from "./actionTypes";
+import { SET_ZIP, SET_SEARCH_OPTIONS } from "./actionTypes";
 import {
   SET_SELLER_IMAGES,
   SET_CLOUDINARY_IMAGES,
@@ -16,7 +16,12 @@ export const setModelOptions = (options) => {
     payload: options,
   };
 };
-
+export const setSearchOptions = (options) => {
+  return {
+    type: SET_SEARCH_OPTIONS,
+    payload: searchOptions,
+  };
+};
 export const setVinData = (vinData) => {
   return {
     type: SET_VIN_DATA,

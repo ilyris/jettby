@@ -9,6 +9,7 @@ export default function Inputcard({
   icon,
   cid,
   label,
+  selected = null,
   options = [],
   arrow = null,
   changeFunc,
@@ -30,10 +31,14 @@ export default function Inputcard({
             <Form.Select name={label} onChange={changeFunc}>
               {label === "Model"
                 ? modelList.map((model) => {
-                    return <Option key={model} value={model} />;
+                    return (
+                      <Option key={model} selected={selected} value={model} />
+                    );
                   })
                 : options.map((option) => {
-                    return <Option key={option} value={option} />;
+                    return (
+                      <Option key={option} selected={selected} value={option} />
+                    );
                   })}
             </Form.Select>
             {arrow !== null && (

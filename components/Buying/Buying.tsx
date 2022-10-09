@@ -6,15 +6,17 @@ import { useSelector } from "react-redux";
 
 // Components
 import ListingCard from "./ListingCard/ListingCard";
+import Primary from "./FacetSearch/Primary/Primary";
 
 export default function Buying() {
   const listings = useSelector((state: RootState) => state.listings.listings);
 
   return (
     <>
-      <h2>Listings</h2>
       <main className="Buying">
-        <aside>Menu</aside>
+        <aside>
+          <Primary />
+        </aside>
         <section>
           {!!listings.length &&
             listings.map((listing) => {

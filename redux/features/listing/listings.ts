@@ -20,9 +20,10 @@ import { getCars } from "../../../helpers/api-calls/car-data";
 const initialState = {
   listings: [],
   page: 0,
-  location: "",
+  distance: "",
   make: "",
   model: "",
+  zip_code: 11111,
   year: "",
   price: 0,
   mileage: "",
@@ -36,7 +37,7 @@ export const getListings = createAsyncThunk(
     const promise = await getCars({ make, model, price, distance, zip_code });
     console.log(promise);
     // Inferred return type: Promise<MyData>
-    return promise.data;
+    return { result: promise.data, make, model, price, distance, zip_code };
   }
 );
 
@@ -44,25 +45,24 @@ export const listings = createSlice({
   name: "listings",
   initialState,
   reducers: {
-    // setSellerImages: (state, action) => {
-    //   state.images.push(action.payload);
-    // },
-    // setCloudinaryImages: (state, action) => {
-    //   state.cloudinaryImages = [...action.payload];
-    // },
-    // setErrors: (state, action) => {
-    //   const keys = Object.keys(action.payload);
-    //   const values = Object.values(action.payload);
-    //   const errors = {};
-    //   keys.forEach((key, i) => {
-    //     errors[key] = values[i];
-    //   });
-    //   state.errors = errors;
-    // },
+    setSearchData: (state, action) => {
+      const { make, model, price, distance, zip_code } = action.payload;
+      state.make = make;
+      state.model = model;
+      state.price = price;
+      state.distance = distance;
+      state.zip_code = zip_code;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getListings.fulfilled, (state, action) => {
-      state.listings = action.payload;
+      const { result, make, model, price, distance, zip_code } = action.payload;
+      state.listings = result;
+      state.make = make;
+      state.model = model;
+      state.price = price;
+      state.distance = distance;
+      state.zip_code = zip_code;
     });
   },
 });

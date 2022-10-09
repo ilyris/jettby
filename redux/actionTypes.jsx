@@ -9,6 +9,7 @@ export const SET_MESSAGE = "SET_MESSAGE";
 
 // Buyer Details
 export const SET_ZIP = "SET_ZIP";
+export const SET_SEARCH_OPTIONS = "SET_SEARCH_OPTIONS";
 
 // Seller Details
 export const SET_SELLER_IMAGES = "SET_SELLER_IMAGES";

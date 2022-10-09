@@ -15,7 +15,6 @@ import {
 } from "../helpers/api-calls/map-calls";
 
 export default function Layout({ children }) {
-  console.log(useSelector((state) => state));
   const hasAlert = useSelector((state) => state.alert.isActive);
   const buying = useSelector((state) => state.buying);
   const dispatch = useDispatch();

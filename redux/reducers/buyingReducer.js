@@ -1,18 +1,19 @@
 const initialState = {
-  make: '',
-  model: '',
-  price: '',
+  make: "",
+  model: "",
+  price: "",
   distance: 30,
   zip_code: 55555,
 };
 
 const buyingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'BUYING':
+    case "SET_SEARCH_OPTIONS":
       return {
-        car: action.payload,
+        ...state,
+        ...action.payload,
       };
-    case 'SET_ZIP':
+    case "SET_ZIP":
       return {
         ...state,
         zip_code: action.payload,

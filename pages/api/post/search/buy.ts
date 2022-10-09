@@ -36,8 +36,7 @@ export default async function handler(req, res) {
   console.log(obj);
   try {
     let result = await listing.find(obj).toArray();
-    console.log(result);
-    res.status(200).json(result);
+    res.status(200).json({ result, obj });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
