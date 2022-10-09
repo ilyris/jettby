@@ -14,7 +14,7 @@ export default function Inputcard({
   changeFunc,
 }) {
   const modelList = useSelector(
-    (state) => state.rootReducer.modelOptionReducer.inputs[1].options
+    (state) => state.modelOptionReducer.inputs[1].options
   );
   const buying = useSelector((state) => state.buying);
 

@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 export default function Alert() {
-  const message = useSelector((state) => state.rootReducer.alert.message);
-  const variant = useSelector((state) => state.rootReducer.alert.variant);
+  const message = useSelector((state) => state.alert.message);
+  const variant = useSelector((state) => state.alert.variant);
 
   const dropIn = {
     hidden: {

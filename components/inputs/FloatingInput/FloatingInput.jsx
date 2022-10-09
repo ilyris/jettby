@@ -24,7 +24,7 @@ export default function FloatingInput({ inputData }) {
     length,
   } = inputData;
 
-  const errors = useSelector((state) => state.rootReducer.selling.errors);
+  const errors = useSelector((state) => state.selling.errors);
   const name = label.toLowerCase().replace(" ", "_");
 
   // validation

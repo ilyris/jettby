@@ -198,7 +198,7 @@ export default function FileInput({ label, type, cid, name }) {
         </div>
       </div>
 
-      {images.length && (
+      {!!images.length && (
         <div className="Upload--container">
           <SRLWrapper>
             {images.map((image, i) => {

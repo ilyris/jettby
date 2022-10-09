@@ -72,7 +72,18 @@ const initialState = {
       type: "select",
       cid: "priceControl",
       label: "Price",
-      options: ["No max price"],
+      options: [
+        "No max price",
+        "1,000 - 5,000",
+        "5,000 - 10,000",
+        "10,000 - 15,000",
+        "15,000 - 20,000",
+        "20,000 - 25,000",
+        "25,000 - 35,000",
+        "35,000 - 40,000",
+        "40,000 - 45,000",
+        "45,000 - 50,000",
+      ],
     },
     {
       type: "select",
@@ -90,6 +101,7 @@ const initialState = {
 };
 
 const modelOptionReducer = (state = initialState, action) => {
+  console.log(action.payload);
   switch (action.type) {
     case SET_MODEL_OPTIONS:
       const modelObj = {

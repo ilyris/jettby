@@ -8,21 +8,23 @@ import "../styles/components/components.scss";
 import "../styles/globals.scss";
 // Redux
 import { Provider } from "react-redux";
-import store from "../redux/store";
-
+import { persistor, store } from "../redux/store.tsx";
+import { PersistGate } from "redux-persist/integration/react";
 // lightbox
 import SimpleReactLightbox from "simple-react-lightbox";
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <SSRProvider>
-        <SimpleReactLightbox>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </SimpleReactLightbox>
-      </SSRProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SSRProvider>
+          <SimpleReactLightbox>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SimpleReactLightbox>
+        </SSRProvider>
+      </PersistGate>
     </Provider>
   );
 }

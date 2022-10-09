@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { RootState } from "../../redux/store";
+
+// redux
+import { useSelector } from "react-redux";
 
 // Components
 import ListingCard from "./ListingCard/ListingCard";
 
 export default function Buying() {
-  const [allListings, setAllListings] = useState<Array<any>>([]);
-
-  const getAllListings = async (): Promise<Array<any>> => {
-    const res = await axios.get("/api/get/sell/listing");
-    console.log(res);
-    setAllListings(res.data.data);
-    return res.data.data;
-  };
-
-  useEffect(() => {
-    if (allListings.length === 0) getAllListings();
-  }, []);
+  const listings = useSelector((state: RootState) => state.listings.listings);
 
   return (
     <>
@@ -24,8 +16,8 @@ export default function Buying() {
       <main className="Buying">
         <aside>Menu</aside>
         <section>
-          {allListings.length &&
-            allListings.map((listing) => {
+          {!!listings.length &&
+            listings.map((listing) => {
               const {
                 make,
                 model,

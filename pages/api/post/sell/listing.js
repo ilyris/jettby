@@ -17,7 +17,6 @@ export default async function handler(req, res) {
   try {
     // console.log(body);
     const result = await listing.insertOne(body);
-    console.log({ result });
     res.status(200).json(result);
   } catch (err) {
     console.log(err);

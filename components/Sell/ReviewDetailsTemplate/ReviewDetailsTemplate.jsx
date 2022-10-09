@@ -12,9 +12,12 @@ import "react-awesome-slider/dist/styles.css";
 import { useSelector } from "react-redux";
 
 export default function ReviewDetailsTemplate({ formState, step, setStep }) {
-  const vinData = useSelector((state) => state.rootReducer.selling.vinData);
-  const images = useSelector((state) => state.rootReducer.selling.images);
+  const vinData = useSelector((state) => state.selling.vinData);
+  const images = useSelector((state) => state.selling.images);
   const cloudImgs = useSelector((state) => state.sellingTest.cloudinaryImages);
+  const sanitizedPrice = formState.listing_price.replace(/\D/g, "");
+  const price2Num = Number(sanitizedPrice);
+  formState.listing_price = price2Num;
 
   const onSubmit = async (e, formState) => {
     console.log(formState);

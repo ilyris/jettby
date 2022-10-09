@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { fetchVinData } from "../../../redux/features/selling/selling";
+
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setModelOptions, setVinData } from "../../../redux/actions";
+import { getListings } from "../../../redux/features/listing/listings";
 
 // comps
 import Form from "react-bootstrap/Form";
@@ -27,10 +29,8 @@ export default function Heroform({}) {
   const [formClass, setFormClass] = useState("is-buying");
   const [formName, setFormName] = useState("buying");
 
-  const inputData = useSelector(
-    (state) => state.rootReducer.modelOptionReducer.inputs
-  );
-
+  const inputData = useSelector((state) => state.modelOptionReducer.inputs);
+  console.log(inputData);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -67,7 +67,17 @@ export default function Heroform({}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (e.target.name.includes("buying")) {
-      // dispatch action here
+      console.log(buyingFormData);
+      dispatch(
+        getListings({
+          make: buyingFormData.make,
+          model: buyingFormData.model,
+          price: buyingFormData.price,
+          distance: buyingFormData.distance,
+          zipcode: buyingFormData.zip_code,
+        })
+      );
+      router.push("/buy/buying");
     } else {
       // submit selling
       const promise = await getVinInfo(sellingFormData.vin);
