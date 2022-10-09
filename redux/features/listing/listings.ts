@@ -56,8 +56,8 @@ export const listings = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getListings.fulfilled, (state, action) => {
-      const { result, make, model, price, distance, zip_code } = action.payload;
-      state.listings = result;
+      const { make, model, price, distance, zip_code } = action.payload;
+      state.listings = action.payload.result;
       state.make = make;
       state.model = model;
       state.price = price;

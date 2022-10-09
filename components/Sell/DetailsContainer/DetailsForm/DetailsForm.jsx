@@ -42,6 +42,7 @@ export default function Detailsform({
   };
 
   const onChange = (form) => {
+    // dispatch formState to selling form
     form.getState().valid ? setHasError(false) : setHasError(true);
   };
 

@@ -1,6 +1,7 @@
 // libs
 import React from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 // components
 import Button from "../../inputs/Button/Button";
@@ -19,12 +20,16 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
   const price2Num = Number(sanitizedPrice);
   formState.listing_price = price2Num;
 
+  const router = useRouter();
+
   const onSubmit = async (e, formState) => {
     console.log(formState);
     // map api call here to back-end
     await axios
       .post("/api/post/sell/listing", { formState, cloudImgs })
-      .then((res) => console.log(res))
+      .then((res) => {
+        router.push("/");
+      })
       .catch((err) => console.log(err));
   };
 

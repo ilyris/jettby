@@ -6,7 +6,7 @@ import Option from "../../../inputs/Option";
 
 export default function Inputcard({
   type,
-  icon,
+  icon = null,
   cid,
   label,
   selected = null,
@@ -21,9 +21,11 @@ export default function Inputcard({
 
   return (
     <div className="InputCard" data-key={label}>
-      <div className="icon">
-        <FontAwesomeIcon icon={icon} />
-      </div>
+      {!!icon && (
+        <div className="icon">
+          <FontAwesomeIcon icon={icon} />
+        </div>
+      )}
       <Form.Group className="HeroForm--form__group" controlId={cid}>
         <Form.Label>{label}</Form.Label>
         {type === "select" && (

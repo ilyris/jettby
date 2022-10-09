@@ -33,10 +33,9 @@ export default async function handler(req, res) {
     ...(zipcode !== undefined && { zip_code: zipcode }),
     // ...{ distance },
   };
-  console.log(obj);
   try {
     let result = await listing.find(obj).toArray();
-    res.status(200).json({ result, obj });
+    res.status(200).json(result);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

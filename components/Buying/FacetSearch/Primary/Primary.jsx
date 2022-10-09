@@ -14,8 +14,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Primary(props) {
-  const icons = [faMagnifyingGlass, faCar, faWallet, faMap, faMapMarkerAlt];
-
   const listingData = useSelector((state) => state.listings);
   const inputData = useSelector((state) => state.modelOptionReducer.inputs);
 
@@ -62,13 +60,22 @@ export default function Primary(props) {
             // onChange={() => onChange(form)}
             // onBlur={() => onChange(form)}
           >
+            <div>
+              <Button
+                type={"button"}
+                name={"next"}
+                variant={"primary"}
+                onClick={(e) => console.log(e)}
+                text={"Search"}
+                // disabled={hasError}
+              />
+            </div>
             <>
               {inputData.map((d, i) => {
                 return (
                   <InputCard
                     key={d.label}
                     type={d.type}
-                    icon={icons[i]}
                     cid={d.cid}
                     label={d.label}
                     options={d.options}
@@ -79,21 +86,11 @@ export default function Primary(props) {
                       searchingFormData.make == "All"
                         ? inputData[1].options
                         : searchingFormData.make
-                    } // should be whats in redux or whats the most recent change
+                    }
                   />
                 );
               })}
             </>
-            <div>
-              <Button
-                type={"button"}
-                name={"next"}
-                variant={"primary"}
-                onClick={(e) => console.log(e)}
-                text={"Next"}
-                // disabled={hasError}
-              />
-            </div>
           </form>
         )}
       />

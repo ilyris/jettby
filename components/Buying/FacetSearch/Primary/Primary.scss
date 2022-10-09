@@ -1,0 +1,71 @@
+.SearchForm {
+  background-color: #ededed;
+  border-radius: 5px;
+  padding: 10px;
+
+  button {
+    width: 100%;
+    text-align: center;
+  }
+  .InputCard {
+    flex: 1 0 12%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+
+    .HeroForm--form__group {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .select-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      label {
+        font-weight: 500;
+        margin-bottom: 0;
+        padding-left: 5px;
+        color: $primary;
+      }
+      input,
+      select {
+        border: 0px;
+        outline: 0px;
+        padding: 0;
+        width: fit-content;
+        background: none;
+        font-size: 16px;
+        text-align: right;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      //   select[name="Price"] {
+      //     max-width: 100%;
+      //   }
+      //   select[name="Zip Code"] {
+      //     margin-right: 20px;
+      //   }
+      select {
+        z-index: 1;
+        padding-left: 5px;
+        padding-right: 5px;
+        max-width: 100%;
+        border-bottom: 1px soilid $secondary;
+
+        option {
+          appearance: none;
+        }
+      }
+      .select-icon {
+        width: 15px;
+        padding-left: 5px;
+      }
+    }
+  }
+}

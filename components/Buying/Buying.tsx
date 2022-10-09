@@ -10,7 +10,7 @@ import Primary from "./FacetSearch/Primary/Primary";
 
 export default function Buying() {
   const listings = useSelector((state: RootState) => state.listings.listings);
-
+  console.log(listings);
   return (
     <>
       <main className="Buying">
