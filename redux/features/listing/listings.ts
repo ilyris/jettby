@@ -33,9 +33,7 @@ export const getListings = createAsyncThunk(
   "listing/getListings",
   // Declare the type your function argument here:
   async ({ make, model, price, distance, zip_code }): Promise<any> => {
-    console.log({ make, model, price, distance, zip_code });
     const promise = await getCars({ make, model, price, distance, zip_code });
-    console.log(promise);
     // Inferred return type: Promise<MyData>
     return { result: promise.data, make, model, price, distance, zip_code };
   }

@@ -10,7 +10,6 @@ import Primary from "./FacetSearch/Primary/Primary";
 
 export default function Buying() {
   const listings = useSelector((state: RootState) => state.listings.listings);
-  console.log(listings);
   return (
     <>
       <main className="Buying">
@@ -33,6 +32,7 @@ export default function Buying() {
 
               return (
                 <ListingCard
+                  id={listing._id}
                   key={Number(mileage)}
                   carPicture={cloudinary_urls[0]}
                   carTitle={title}

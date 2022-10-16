@@ -5,7 +5,7 @@ export default function Button({
   type,
   name,
   variant,
-  onClick,
+  onClick = (e) => console.log(e),
   text,
   data,
   disabled = false,

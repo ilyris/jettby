@@ -33,6 +33,7 @@ export default function FileInput({ label, type, cid, name }) {
   const [files, setFiles] = useState([]);
 
   // successfully uploaded images to cloudinary
+  // need to upload deleteTokens so user can delete photos
   const [cloud, setCloud] = useState([]);
   let cloudImgs = [];
 

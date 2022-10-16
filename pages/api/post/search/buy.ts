@@ -8,7 +8,6 @@ export default async function handler(req, res) {
   const db = client.db();
   const listing = db.collection("listing");
   let { make, model, price, distance, zipcode } = req.body;
-
   let defaultPrice: string = "0 - 100000";
 
   let pricesArr =
@@ -22,7 +21,7 @@ export default async function handler(req, res) {
 
   const obj = {
     ...(make !== "ALL" && { make }),
-    ...(model !== "ALL" && { model }),
+    ...(!model.includes("ALL") && { model }),
     ...{
       listing_price: {
         $gte: minPrice,
@@ -33,6 +32,7 @@ export default async function handler(req, res) {
     ...(zipcode !== undefined && { zip_code: zipcode }),
     // ...{ distance },
   };
+  console.log(obj);
   try {
     let result = await listing.find(obj).toArray();
     res.status(200).json(result);

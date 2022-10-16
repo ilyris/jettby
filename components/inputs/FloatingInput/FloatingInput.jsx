@@ -10,7 +10,11 @@ import Option from "../Option";
 import FileInput from "../FileInput/FileInput.tsx";
 
 // helpers
-import { filterCharacters, sanitizeCharacters } from "./errors.js";
+import {
+  filterCharacters,
+  sanitizeCharacters,
+  sanitizeTextArea,
+} from "./errors.js";
 
 export default function FloatingInput({ inputData }) {
   const {
@@ -42,11 +46,13 @@ export default function FloatingInput({ inputData }) {
 
   // value filter
   const filterVal = (value) => {
-    if (name == "zip_code" || name == "mileage") {
+    if (name === "zip_code" || name === "mileage") {
       return filterCharacters(value);
-    } else if (name == "listing_price") {
+    } else if (name === "listing_price") {
       if (!value) return;
       return "$" + Number(filterCharacters(value).toFixed(1)).toLocaleString();
+    } else if (name === "additional_information (optional)") {
+      return sanitizeTextArea(value);
     } else {
       return sanitizeCharacters(value);
     }

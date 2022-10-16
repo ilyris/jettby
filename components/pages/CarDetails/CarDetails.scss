@@ -1,0 +1,101 @@
+@import "../../../styles/variables.scss";
+
+.Details {
+  display: flex;
+  flex-flow: row wrap;
+  .left-col {
+    width: 60%;
+  }
+  form {
+    width: 35%;
+  }
+  &--container {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid $secondary;
+    border-radius: 5px;
+    padding: 20px;
+
+    h5 {
+      width: 100%;
+      font-weight: bold;
+      color: $primary;
+      margin-bottom: 10px;
+    }
+
+    &__row {
+      width: 45%;
+
+      p {
+        margin-right: 5px;
+
+        span {
+          &:first-of-type {
+            font-weight: bold;
+            margin-right: 5px;
+            color: $primary;
+          }
+          &:last-of-type {
+            margin-left: 5px;
+          }
+        }
+        svg {
+          margin-right: 5px;
+          width: 26px;
+          color: $secondary;
+        }
+      }
+
+      &:last-of-type {
+        margin-left: 50px;
+      }
+    }
+
+    &__row.full {
+      margin-left: 0;
+      width: 100%;
+      padding-top: 20px;
+
+      h5 {
+        font-weight: bold;
+      }
+
+      ul {
+        padding: 0;
+
+        li {
+          list-style: none;
+          padding-left: 5px;
+        }
+      }
+      .seller-information {
+        border-top: 1px solid $secondary;
+        padding-top: 20px;
+      }
+      &--features {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        flex-flow: row wrap;
+        border-top: 1px solid $secondary;
+
+        .left {
+          flex: 1 1 auto;
+          p {
+            font-weight: bold;
+            padding-top: 10px;
+            margin-bottom: 10px;
+          }
+        }
+        ul,
+        span {
+          flex: 1 1 auto;
+          padding-left: 20px;
+          padding-top: 20px;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}

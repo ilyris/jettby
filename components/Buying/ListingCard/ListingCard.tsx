@@ -1,17 +1,25 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faGauge } from "@fortawesome/free-solid-svg-icons";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
 const ListingCard = ({
+  id,
   carPicture,
   carTitle,
   carPrice,
   carLocation,
   carMileage,
 }) => {
-  console.log(carPicture);
+  const router = useRouter();
+  const handleClick = () => {
+    console.log(id);
+    // push user to specific car detail page
+    router.push(`/vehicleDetails/${id}`);
+  };
+
   return (
     <Card className="CarCard">
       <div className="CarCard--wrapper">
@@ -27,8 +35,10 @@ const ListingCard = ({
           </Card.Text>
         </Card.Body>
         <Card.Footer className="CarCard--wrapper__footer">
-          <Card.Text>{carPrice}</Card.Text>
-          <Button variant="primary">Details</Button>
+          <Card.Text>Price: {carPrice}</Card.Text>
+          <Button variant="primary" onClick={handleClick}>
+            Details
+          </Button>
         </Card.Footer>
       </div>
     </Card>

@@ -16,6 +16,7 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
   const vinData = useSelector((state) => state.selling.vinData);
   const images = useSelector((state) => state.selling.images);
   const cloudImgs = useSelector((state) => state.sellingTest.cloudinaryImages);
+
   const sanitizedPrice = formState.listing_price.replace(/\D/g, "");
   const price2Num = Number(sanitizedPrice);
   formState.listing_price = price2Num;
@@ -40,8 +41,8 @@ export default function ReviewDetailsTemplate({ formState, step, setStep }) {
       <div className="ReviewDetailsTemplate--info">
         <div className="ReviewDetailsTemplate--info__heading">
           <h2>{`${formState["make"]} ${formState["model"]} ${formState["year"]}`}</h2>
-          <h4>{formState["mileage"]}</h4>
-          <h4>{formState["listing_price"]}</h4>
+          <h4>Mileage: {formState["mileage"]}</h4>
+          <h4>Price: {formState["listing_price"]}</h4>
         </div>
         <div className="ReviewDetailsTemplate--info__images">
           <AwesomeSlider animation="cubeAnimation">
